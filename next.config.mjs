@@ -1,10 +1,5 @@
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
-  experimental: {
-    inlineCss: true,
-    useCache: true,
-    clientSegmentCache: true,
-  },
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -13,6 +8,7 @@ const nextConfig = {
   },
   images: {
     formats: ['image/avif', 'image/webp'],
+    qualities: [75, 85, 100],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     remotePatterns: [
@@ -25,7 +21,8 @@ const nextConfig = {
         hostname: '**.graphassets.com',
       },
     ],
+    unoptimized: true,
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig

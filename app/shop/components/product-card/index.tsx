@@ -15,7 +15,7 @@ export const ProductCard = ({ product }: { product: Product }) => {
     <div className="relative w-full aspect-[3/4] md:aspect-square bg-muted group overflow-hidden">
       <Link
         href={`/product/${product.handle}`}
-        className="block size-full focus-visible:outline-none"
+        className="block size-full relative focus-visible:outline-none"
         aria-label={`View details for ${product.title}`}
         prefetch
       >

@@ -18,7 +18,7 @@ export const DesktopGallery = ({ product }: { product: Product }) => {
       alt={image.altText}
       width={image.width}
       height={image.height}
-      className="object-cover w-11/12 ml-3 mt-0 h-10/12"
+      className="object-cover w-11/12 ml-3 h-10/12 mt-5"
       quality={100}
     />
   ))

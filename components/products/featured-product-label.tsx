@@ -47,7 +47,7 @@ export function FeaturedProductLabel({
       <div className="leading-4 overflow-hidden pr-4 text-left">
         <Link
           href={`/product/${product.handle}`}
-          className="inline-block w-full truncate text-base font-semibold opacity-80 mb-0 tracking-wider"
+          className="inline-block w-full truncate opacity-80 mb-0 tracking-wider text-lg font-bold"
         >
           {product.title}
         </Link>

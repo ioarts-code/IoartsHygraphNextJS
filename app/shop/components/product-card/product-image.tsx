@@ -20,10 +20,9 @@ export const ProductImage = ({ product }) => {
     <Image
       src={variantImage.url || "/placeholder.svg"}
       alt={variantImage.altText || product.title}
-      width={variantImage.width || 600}
-      height={variantImage.height || 600}
+      fill
       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-      className="object-cover size-full"
+      className="object-contain lg:object-cover"
       quality={100}
       placeholder={variantImage?.thumbhash ? "blur" : undefined}
       blurDataURL={variantImage?.thumbhash}
