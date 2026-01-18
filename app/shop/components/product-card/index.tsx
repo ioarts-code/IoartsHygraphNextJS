@@ -4,12 +4,13 @@ import type { Product } from "@/lib/hygraph/types"
 import { VariantSelector } from "../variant-selector"
 import { ProductImage } from "./product-image"
 
-export const ProductCard = ({ product }: { product: Product }) => {
+export const ProductCard = ({ product, index = 0 }: { product: Product; index?: number }) => {
   const hasNoOptions = product.options.length === 0
   const hasOneOptionWithOneValue = product.options.length === 1 && product.options[0].values.length === 1
   const justHasColorOption = product.options.length === 1 && product.options[0].name.toLowerCase() === "color"
 
   const renderInCardAddToCart = hasNoOptions || hasOneOptionWithOneValue || justHasColorOption
+  const isEven = index % 2 === 0
 
   return (
     <div className="relative w-full aspect-[3/4] md:aspect-square bg-muted group overflow-hidden">
@@ -22,6 +23,13 @@ export const ProductCard = ({ product }: { product: Product }) => {
         <Suspense fallback={null}>
           <ProductImage product={product} />
         </Suspense>
+        {/* Dark overlay - alternating shades for odd/even items, hidden on hover */}
+        <div 
+          className={`absolute inset-0 pointer-events-none transition-opacity duration-300 group-hover:opacity-0 group-focus-visible:opacity-0 ${
+            isEven ? "bg-black/20" : "bg-black/35"
+          }`}
+          aria-hidden="true"
+        />
       </Link>
 
       {/* Interactive Overlay - popup only */}

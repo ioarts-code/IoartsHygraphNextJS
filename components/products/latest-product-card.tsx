@@ -32,7 +32,7 @@ export function LatestProductCard({
             width={1000}
             height={100}
             quality={100}
-            className="object-cover size-full flex-1 max-md:aspect-square mt-10 md:mt-0"
+            className="object-cover size-full flex-1 max-md:aspect-square mt-[calc(var(--header-height,3.5rem)+20px)] md:mt-2.5"
           />
         </Link>
         <div className="absolute bottom-0 left-0 grid w-full grid-cols-4 gap-6 pointer-events-none max-md:contents p-sides">
