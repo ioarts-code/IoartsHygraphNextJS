@@ -43,7 +43,21 @@ export default async function Home() {
     featuredProducts = []
   }
 
-  const [lastProduct, ...restProducts] = featuredProducts
+  // Find "Stray motif" as the best seller, fallback to first product
+  const bestSellerHandle = "stray-motif"
+  const bestSellerIndex = featuredProducts.findIndex(
+    (p) => p.handle === bestSellerHandle || p.title.toLowerCase().includes("stray motif")
+  )
+  
+  let bestSellerProduct: Product | undefined
+  let restProducts: Product[]
+  
+  if (bestSellerIndex !== -1) {
+    bestSellerProduct = featuredProducts[bestSellerIndex]
+    restProducts = featuredProducts.filter((_, index) => index !== bestSellerIndex)
+  } else {
+    [bestSellerProduct, ...restProducts] = featuredProducts
+  }
 
   if (!isHygraphConfigured()) {
     return (
@@ -98,7 +112,7 @@ export default async function Home() {
           </div>
           {featuredProducts.length > 0 ? (
             <>
-              <LatestProductCard className="col-span-2" product={lastProduct} principal />
+              <LatestProductCard className="col-span-2" product={bestSellerProduct} principal />
 
               {restProducts.map((product: any, index: number) => (
                 <LatestProductCard
