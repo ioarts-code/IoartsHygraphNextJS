@@ -32,7 +32,7 @@ export function LatestProductCard({
             width={1000}
             height={100}
             quality={100}
-            className="object-cover size-full flex-1 max-md:aspect-square mt-[calc(var(--header-height,3.5rem)+20px)] md:mt-2.5"
+            className="object-contain xl:object-cover size-full flex-1 max-md:aspect-square mt-[calc(var(--header-height,3.5rem)+20px)] md:mt-2.5"
           />
         </Link>
         <div className="absolute bottom-0 left-0 grid w-full grid-cols-4 gap-6 pointer-events-none max-md:contents p-sides">
@@ -54,7 +54,7 @@ export function LatestProductCard({
           alt={product.featuredImage?.altText || product.title}
           width={1000}
           height={100}
-          className="object-cover size-full"
+          className="object-contain xl:object-cover size-full"
         />
       </Link>
 

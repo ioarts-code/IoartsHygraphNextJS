@@ -87,14 +87,14 @@ export default function MobileMenu({ collections }: MobileMenuProps) {
                   </Button>
                 </div>
 
-                <nav className="grid grid-cols-2 gap-y-4 gap-x-6 mb-10">
+                <nav className="flex flex-wrap gap-2 mb-10">
                   {navItems.map((item) => (
                     <Button
                       key={item.href}
                       size="sm"
                       variant="secondary"
                       onClick={closeMobileMenu}
-                      className="justify-start uppercase bg-white text-foreground hover:bg-white/90"
+                      className="w-auto justify-center uppercase bg-white text-foreground hover:bg-white/90"
                       asChild
                     >
                       <Link href={item.href} prefetch>

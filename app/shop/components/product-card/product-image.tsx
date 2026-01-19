@@ -22,7 +22,7 @@ export const ProductImage = ({ product }) => {
       alt={variantImage.altText || product.title}
       fill
       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-      className="object-contain lg:object-cover"
+      className="object-contain xl:object-cover"
       quality={100}
       placeholder={variantImage?.thumbhash ? "blur" : undefined}
       blurDataURL={variantImage?.thumbhash}

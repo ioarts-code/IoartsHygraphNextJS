@@ -8,18 +8,22 @@ export const DesktopGallery = ({ product }: { product: Product }) => {
   const selectedVariant = useSelectedVariant(product)
   const images = useProductImages(product, selectedVariant?.selectedOptions)
 
-  return images.map((image) => (
-    <Image
-      style={{
-        aspectRatio: `${image.width} / ${image.height}`,
-      }}
-      key={`${image.url}-${image.selectedOptions?.map((o) => `${o.name},${o.value}`).join("-")}`}
-      src={image.url || "/placeholder.svg"}
-      alt={image.altText}
-      width={image.width}
-      height={image.height}
-      className="object-cover w-11/12 ml-3 h-10/12 mt-5"
-      quality={100}
-    />
-  ))
+  return (
+    <div className="flex flex-col items-center pt-4 gap-2">
+      {images.map((image) => (
+        <Image
+          style={{
+            aspectRatio: `${image.width} / ${image.height}`,
+          }}
+          key={`${image.url}-${image.selectedOptions?.map((o) => `${o.name},${o.value}`).join("-")}`}
+          src={image.url || "/placeholder.svg"}
+          alt={image.altText}
+          width={image.width}
+          height={image.height}
+          className="object-contain xl:object-cover w-11/12 mx-auto"
+          quality={100}
+        />
+      ))}
+    </div>
+  )
 }

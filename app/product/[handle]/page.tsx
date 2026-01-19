@@ -134,15 +134,15 @@ export default async function ProductPage(props: { params: Promise<{ handle: str
         }}
       />
 
-      <div className="flex flex-col md:grid md:grid-cols-12 md:gap-sides min-h-max">
+      <div className="flex flex-col md:grid md:grid-cols-12 md:gap-sides min-h-max pt-8">
         {/* Mobile Gallery Slider */}
-        <div className="md:hidden col-span-full h-[60vh] min-h-[400px]">
+        <div className="md:hidden col-span-full h-[55vh] min-h-[350px]">
           <Suspense fallback={null}>
             <MobileGallerySlider product={product} />
           </Suspense>
         </div>
 
-        <div className="flex sticky top-0 flex-col col-span-5 2xl:col-span-4 max-md:col-span-full md:h-screen min-h-max max-md:p-sides md:pl-sides md:pt-top-spacing max-md:static">
+        <div className="flex sticky top-0 flex-col col-span-5 2xl:col-span-4 max-md:col-span-full md:h-screen min-h-max max-md:p-sides max-md:pt-2 md:pl-sides md:pt-top-spacing max-md:static">
           <div className="col-span-full">
             <Breadcrumb className="col-span-full mb-4 md:mb-8">
               <BreadcrumbList>
@@ -172,8 +172,8 @@ export default async function ProductPage(props: { params: Promise<{ handle: str
               </BreadcrumbList>
             </Breadcrumb>
 
-            <div className="flex flex-col grid-cols-2 px-3 py-2 rounded-md md:grid place-items-baseline pt-5 gap-1.5 bg-transparent">
-              <h1 className="text-2xl md:text-3xl lg:text-6xl 2xl:text-7xl font-semibold text-balance max-md:mb-1">
+            <div className="flex flex-col w-full max-w-full px-3 py-2 rounded-md pt-5 gap-1.5 bg-transparent">
+              <h1 className="text-6xl md:text-7xl lg:text-8xl 2xl:text-9xl font-semibold text-balance max-md:mb-1">
                 {product.title}
               </h1>
               {collection && (

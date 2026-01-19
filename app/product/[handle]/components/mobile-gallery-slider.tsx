@@ -44,14 +44,14 @@ export function MobileGallerySlider({ product }: MobileGallerySliderProps) {
   if (totalImages === 0) return null
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full pt-4 pb-2">
       {/* Embla Carousel */}
       <div className="overflow-hidden h-full" ref={emblaRef}>
         <div className="flex h-full">
           {images.map((image, index) => (
             <div
               key={`${image.url}-${image.selectedOptions?.map((o) => `${o.name},${o.value}`).join("-")}`}
-              className="flex-shrink-0 w-full h-full relative"
+              className="flex-shrink-0 w-full h-full relative flex items-center justify-center"
             >
               <Image
                 style={{
@@ -61,7 +61,7 @@ export function MobileGallerySlider({ product }: MobileGallerySliderProps) {
                 alt={image.altText}
                 width={image.width}
                 height={image.height}
-                className="w-full h-full object-cover"
+                className="w-full h-auto max-h-full object-contain mx-auto"
                 quality={100}
                 priority={index === 0}
               />
