@@ -110,7 +110,7 @@ export default async function Home() {
               </div>
             </div>
           </div>
-          {featuredProducts.length > 0 ? (
+          {featuredProducts.length > 0 && bestSellerProduct ? (
             <>
               <LatestProductCard className="col-span-2" product={bestSellerProduct} principal />
 
