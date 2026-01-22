@@ -91,15 +91,15 @@
   --accent: oklch(0.9234 0 0); /* Preserved user value */
   --accent-foreground: oklch(0.2044 0 0); /* Preserved user value */
   --destructive: oklch(0.5802 0.2375 28.48); /* Preserved user value */
-  --destructive-foreground: oklch(0.145 0 0); /* New from diff, using default */
+  --destructive-foreground: oklch(0.577 0.245 27.325); /* Updated from diff */
   --border: oklch(0.7974 0 0); /* Preserved user value */
   --input: oklch(0.9234 0 0); /* Preserved user value */
   --ring: oklch(0.7079 0 0); /* Preserved user value */
-  --chart-1: oklch(0.646 0.222 41.116); /* New from diff */
-  --chart-2: oklch(0.6 0.118 184.704); /* New from diff */
-  --chart-3: oklch(0.398 0.07 227.392); /* New from diff */
-  --chart-4: oklch(0.828 0.189 84.429); /* New from diff */
-  --chart-5: oklch(0.769 0.188 70.08); /* New from diff */
+  --chart-1: oklch(0.646 0.222 41.116); /* Preserved user value */
+  --chart-2: oklch(0.6 0.118 184.704); /* Preserved user value */
+  --chart-3: oklch(0.398 0.07 227.392); /* Preserved user value */
+  --chart-4: oklch(0.828 0.189 84.429); /* Preserved user value */
+  --chart-5: oklch(0.769 0.188 70.08); /* Preserved user value */
 
   --radius: 0.5rem; /* Preserved user value */
   --sides: 1rem; /* Preserved user value */
@@ -109,14 +109,14 @@
   --height-fold: 100vh; /* Preserved user value */
   --height-fold: 100svh; /* Preserved user value */
 
-  --sidebar: oklch(0.985 0 0); /* New from diff */
-  --sidebar-foreground: oklch(0.145 0 0); /* New from diff */
-  --sidebar-primary: oklch(0.205 0 0); /* New from diff */
-  --sidebar-primary-foreground: oklch(0.985 0 0); /* New from diff */
-  --sidebar-accent: oklch(0.97 0 0); /* New from diff */
-  --sidebar-accent-foreground: oklch(0.205 0 0); /* New from diff */
-  --sidebar-border: oklch(0.922 0 0); /* New from diff */
-  --sidebar-ring: oklch(0.708 0 0); /* New from diff */
+  --sidebar: oklch(0.985 0 0); /* Preserved user value */
+  --sidebar-foreground: oklch(0.145 0 0); /* Preserved user value */
+  --sidebar-primary: oklch(0.205 0 0); /* Preserved user value */
+  --sidebar-primary-foreground: oklch(0.985 0 0); /* Preserved user value */
+  --sidebar-accent: oklch(0.97 0 0); /* Updated from diff */
+  --sidebar-accent-foreground: oklch(0.205 0 0); /* Preserved user value */
+  --sidebar-border: oklch(0.922 0 0); /* Preserved user value */
+  --sidebar-ring: oklch(0.708 0 0); /* Preserved user value */
 }
 
 .dark {
@@ -188,10 +188,10 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border outline-ring/50; /* Added outline-ring/50 from diff */
   }
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground; /* Removed font-sans from existing, as per shadcn default */
   }
 }
 
@@ -461,9 +461,10 @@
   }
 }
 
-html,
-body,
-* {
-  overscroll-behavior: none;
+html {
   scroll-behavior: smooth;
+}
+
+body {
+  overscroll-behavior-y: none;
 }

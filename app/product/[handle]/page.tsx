@@ -142,7 +142,7 @@ export default async function ProductPage(props: { params: Promise<{ handle: str
           </Suspense>
         </div>
 
-        <div className="flex sticky top-0 flex-col col-span-5 2xl:col-span-4 max-md:col-span-full md:h-screen min-h-max max-md:p-sides max-md:pt-2 md:pl-sides md:pt-top-spacing max-md:static">
+        <div className="flex flex-col col-span-5 2xl:col-span-4 max-md:col-span-full min-h-max max-md:p-sides max-md:pt-2 md:pl-sides md:pt-top-spacing md:sticky md:top-8 md:self-start">
           <div className="col-span-full">
             <Breadcrumb className="col-span-full mb-4 md:mb-8">
               <BreadcrumbList>

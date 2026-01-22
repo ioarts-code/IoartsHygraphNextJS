@@ -1,0 +1,11 @@
+# robots.txt for ioarts.eu
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://ioarts.eu/sitemap.xml
+
+# Disallow admin and private paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
