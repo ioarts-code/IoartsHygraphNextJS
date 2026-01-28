@@ -33,8 +33,8 @@ export const ProductCard = ({ product, index = 0 }: { product: Product; index?: 
       </Link>
 
       {/* Interactive Overlay - popup only */}
-      <div className="absolute inset-0 p-2 w-full pointer-events-none max-md:flex max-md:items-center max-md:justify-center">
-        <div className="flex absolute inset-x-3 bottom-3 md:absolute justify-center items-center px-4 py-3 rounded-md transition-all duration-300 pointer-events-none bg-popover md:opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 md:translate-y-1/3 group-hover:translate-y-0 group-focus-visible:translate-y-0 group-hover:pointer-events-auto group-focus-visible:pointer-events-auto max-md:pointer-events-auto max-md:static max-md:inset-auto max-md:bottom-auto">
+      <div className="absolute inset-0 p-2 w-full pointer-events-none">
+        <div className="flex absolute inset-x-3 bottom-3 justify-center items-center px-4 py-3 rounded-md transition-all duration-300 pointer-events-none bg-popover md:opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 md:translate-y-1/3 group-hover:translate-y-0 group-focus-visible:translate-y-0 group-hover:pointer-events-auto group-focus-visible:pointer-events-auto max-md:pointer-events-auto">
           <div className="text-center">
             <p className="text-base font-semibold">{product.title}</p>
             {renderInCardAddToCart && (
