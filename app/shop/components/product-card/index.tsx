@@ -23,9 +23,9 @@ export const ProductCard = ({ product, index = 0 }: { product: Product; index?: 
         <Suspense fallback={null}>
           <ProductImage product={product} />
         </Suspense>
-        {/* Dark overlay - alternating shades for odd/even items, hidden on hover */}
+        {/* Dark overlay - alternating shades for odd/even items, hidden on hover and on mobile */}
         <div 
-          className={`absolute inset-0 pointer-events-none transition-opacity duration-300 group-hover:opacity-0 group-focus-visible:opacity-0 ${
+          className={`absolute inset-0 pointer-events-none transition-opacity duration-300 hidden md:block group-hover:opacity-0 group-focus-visible:opacity-0 ${
             isEven ? "bg-black/20" : "bg-black/35"
           }`}
           aria-hidden="true"
