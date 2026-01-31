@@ -14,6 +14,7 @@ export function HomeSidebar({ collections }: HomeSidebarProps) {
           
           
           <p className="font-extrabold text-3xl pr-8">{"illustrations that make sense. What about digital illustrations for your products? Make every product yours for real."}</p>
+          <p className="text-xs text-muted-foreground mt-3">Some products on this site are copyrighted and not for sale.</p>
         </div>
       </div>
       <ShopLinks collections={collections} />
