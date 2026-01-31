@@ -1,3 +1,4 @@
+import { Copyright } from "lucide-react"
 import { ShopLinks } from "../shop-links"
 import type { Collection } from "@/lib/hygraph/types"
 
@@ -14,7 +15,7 @@ export function HomeSidebar({ collections }: HomeSidebarProps) {
           
           
           <p className="font-extrabold text-3xl pr-8">{"illustrations that make sense. What about digital illustrations for your products? Make every product yours for real."}</p>
-          <p className="text-xs text-muted-foreground mt-3">Some products on this site are copyrighted and not for sale.</p>
+          <p className="text-xs text-muted-foreground mt-3 flex items-center gap-1">Some products on this site are copyrighted <Copyright className="w-3 h-3" /> and not for sale.</p>
         </div>
       </div>
       <ShopLinks collections={collections} />
