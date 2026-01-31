@@ -21,6 +21,14 @@ export const CONTACT_LINKS: NavItem[] = [
     label: "DeviantArt",
     href: "https://www.deviantart.com/ioartseu/gallery/all",
   },
+  {
+    label: "Terms of Sale",
+    href: "/terms-of-sale",
+  },
+  {
+    label: "Privacy & Cookies",
+    href: "/privacy-policy",
+  },
 ]
 
 export const HIDDEN_PRODUCT_TAG = "nextjs-frontend-hidden"

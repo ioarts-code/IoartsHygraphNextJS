@@ -17,7 +17,7 @@ export function FeaturedProductLabel({
     return (
       <div className={cn("flex flex-col gap-y-3 p-4 w-full bg-white md:w-fit md:rounded-md", className)}>
         <div>
-          <Badge className="font-black capitalize rounded-full">Best Seller</Badge>
+          <Badge className="font-black capitalize rounded-full">Top Pick</Badge>
         </div>
         <div className="flex flex-col gap-4">
           <div>
