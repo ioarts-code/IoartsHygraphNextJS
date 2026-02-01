@@ -43,10 +43,10 @@ export default async function Home() {
     featuredProducts = []
   }
 
-  // Find "Stray motif" as the best seller, fallback to first product
-  const bestSellerHandle = "stray-motif"
+  // Find "Metroid motif" as the featured product, fallback to first product
+  const bestSellerHandle = "metroid-motif"
   const bestSellerIndex = featuredProducts.findIndex(
-    (p) => p.handle === bestSellerHandle || p.title.toLowerCase().includes("stray motif")
+    (p) => p.handle === bestSellerHandle || p.title.toLowerCase().includes("metroid motif")
   )
   
   let bestSellerProduct: Product | undefined
