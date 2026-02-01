@@ -5,7 +5,7 @@ import { PageLayout } from '@/components/layout/page-layout'
 export default function CopyrightInfoPage() {
   return (
     <PageLayout>
-      <div className="max-w-3xl mx-auto px-4 py-12">
+      <div className="max-w-3xl mx-auto px-4 py-12 pt-20 md:pt-24">
         <h1 className="text-4xl font-bold mb-2">Copyright & Attribution Information</h1>
         <p className="text-muted-foreground mb-8">Last updated: January 2026</p>
 
