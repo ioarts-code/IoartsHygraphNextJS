@@ -29,6 +29,10 @@ export const CONTACT_LINKS: NavItem[] = [
     label: "Privacy & Cookies",
     href: "/privacy-policy",
   },
+  {
+    label: "Copyright & Attribution",
+    href: "/copyright-info",
+  },
 ]
 
 export const HIDDEN_PRODUCT_TAG = "nextjs-frontend-hidden"

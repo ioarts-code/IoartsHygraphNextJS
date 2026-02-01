@@ -8,7 +8,7 @@ export const metadata = {
 export default function TermsOfSalePage() {
   return (
     <PageLayout>
-      <div className="max-w-3xl mx-auto py-12 px-4 md:px-6">
+      <div className="max-w-3xl mx-auto py-12 px-4 md:px-6 pt-20 md:pt-24">
         <h1 className="text-4xl font-bold mb-8">Terms of Sale</h1>
         
         <div className="space-y-8 text-foreground/90 leading-relaxed">
