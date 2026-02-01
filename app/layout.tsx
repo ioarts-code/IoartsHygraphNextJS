@@ -106,7 +106,7 @@ export default async function RootLayout({
           <CartProvider>
             <TooltipProvider>
               <NuqsAdapter>
-                <main data-vaul-drawer-wrapper="true">
+                <main data-vaul-drawer-wrapper="true" className="pt-20 md:pt-24">
                   {!isHygraphConfigured && <HygraphSetupBanner />}
                   <Header collections={collections} />
                   {children}
