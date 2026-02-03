@@ -17,6 +17,10 @@ export const navItems: NavItem[] = [
     label: "shop all",
     href: "/shop",
   },
+  {
+    label: "Dev",
+    href: "https://www.ioarts.se",
+  },
 ]
 
 interface HeaderProps {
