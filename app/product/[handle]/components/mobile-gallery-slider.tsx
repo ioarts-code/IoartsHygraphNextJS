@@ -5,15 +5,14 @@ import Image from "next/image"
 import useEmblaCarousel from "embla-carousel-react"
 import type { Product } from "@/lib/hygraph/types"
 import { Badge } from "@/components/ui/badge"
-import { useProductImages, useSelectedVariant } from "@/components/products/variant-selector"
 
 interface MobileGallerySliderProps {
   product: Product
 }
 
 export function MobileGallerySlider({ product }: MobileGallerySliderProps) {
-  const selectedVariant = useSelectedVariant(product)
-  const images = useProductImages(product, selectedVariant?.selectedOptions)
+  // Display all product images
+  const images = product.images || (product.featuredImage ? [product.featuredImage] : [])
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
@@ -50,17 +49,14 @@ export function MobileGallerySlider({ product }: MobileGallerySliderProps) {
         <div className="flex h-full">
           {images.map((image, index) => (
             <div
-              key={`${image.url}-${image.selectedOptions?.map((o) => `${o.name},${o.value}`).join("-")}`}
+              key={`${image.url}-${index}`}
               className="flex-shrink-0 w-full h-full relative flex items-center justify-center"
             >
               <Image
-                style={{
-                  aspectRatio: `${image.width} / ${image.height}`,
-                }}
                 src={image.url || "/placeholder.svg"}
-                alt={image.altText}
-                width={image.width}
-                height={image.height}
+                alt={image.altText || "Product image"}
+                width={1000}
+                height={1000}
                 className="w-full h-auto max-h-full object-contain mx-auto"
                 quality={100}
                 priority={index === 0}
