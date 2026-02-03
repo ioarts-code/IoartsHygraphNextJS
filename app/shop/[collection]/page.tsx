@@ -43,7 +43,7 @@ function ProductCard({ product }: { product: any }) {
           alt={product.featuredImage?.altText || product.title}
           width={1000}
           height={1000}
-          className="object-contain xl:object-cover size-full"
+          className="object-contain xl:object-cover size-full -translate-y-8"
         />
       </Link>
       <div className="absolute flex p-sides inset-0 items-end pointer-events-none justify-end">
