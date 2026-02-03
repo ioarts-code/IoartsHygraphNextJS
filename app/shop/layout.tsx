@@ -9,12 +9,16 @@ export const revalidate = 60
 
 function ShopLinksComponent({ collections, className }: { collections: Collection[]; className?: string }) {
   return (
-    <div className={cn("text-left", className)}>
-      <h4 className="text-lg font-extrabold md:text-xl">Shop</h4>
-      <ul className="flex flex-col gap-1.5 leading-5 mt-5">
+    <div className={cn("bg-white dark:bg-card rounded-lg p-6", className)}>
+      <h4 className="text-lg font-extrabold md:text-xl text-foreground mb-4">Filter</h4>
+      <ul className="flex flex-col gap-2">
         {collections.map((item, index) => (
           <li key={`${item.handle}-${index}`}>
-            <Link href={`/shop/${item.handle}`} prefetch>
+            <Link 
+              href={`/shop/${item.handle}`} 
+              prefetch
+              className="text-foreground hover:text-foreground/70 transition-colors text-sm md:text-base"
+            >
               {item.title}
             </Link>
           </li>
