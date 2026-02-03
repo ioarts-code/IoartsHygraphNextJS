@@ -38,7 +38,7 @@ export default async function ShopPage() {
     <div className="space-y-8">
       <div>
         <h1 className="text-4xl font-bold tracking-tight">Shop All</h1>
-        <p className="text-muted-foreground mt-2">Explore our complete collection</p>
+        <p className="text-muted-foreground mt-2 hidden md:block">Explore our complete collection</p>
       </div>
 
       {products.length > 0 ? (
