@@ -47,11 +47,11 @@ export async function generateMetadata(props: { params: { collection: string } }
 }
 
 export default async function ShopCategory(props: {
-  params: { collection: string }
-  searchParams?: { [key: string]: string | string[] | undefined }
+  params: Promise<{ collection: string }>
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
-  const { collection } = props.params
-  const searchParams = props.searchParams
+  const { collection } = await props.params
+  const searchParams = await props.searchParams
 
   return <ProductList collection={collection} searchParams={searchParams} />
 }

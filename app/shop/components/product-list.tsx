@@ -2,6 +2,9 @@ import { getCollectionProducts, getCollections, getProducts } from "@/lib/hygrap
 import type { Product, ProductCollectionSortKey, ProductSortKey } from "@/lib/hygraph/types"
 import { ProductListContent } from "./product-list-content"
 import { mapSortKeys } from "@/lib/hygraph/utils"
+import { Suspense } from "react"
+import { ProductGrid } from "./product-grid"
+import { ProductCardSkeleton } from "./product-card-skeleton"
 
 interface ProductListProps {
   collection: string
@@ -39,5 +42,17 @@ export default async function ProductList({ collection, searchParams }: ProductL
 
   const collections = await getCollections()
 
-  return <ProductListContent products={products} collections={collections} />
+  return (
+    <Suspense
+      fallback={
+        <ProductGrid>
+          {Array.from({ length: 12 }).map((_, index) => (
+            <ProductCardSkeleton key={index} />
+          ))}
+        </ProductGrid>
+      }
+    >
+      <ProductListContent products={products} collections={collections} />
+    </Suspense>
+  )
 }
