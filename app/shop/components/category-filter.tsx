@@ -16,6 +16,10 @@ export function CategoryFilter({ categories, className }: CategoryFilterProps) {
   const hasSelectedCategory = !!params.collection
   const categoryCount = useCategoryFilterCount()
 
+  const handleCategoryClick = (handle: string, title: string) => {
+    console.log("[v0] Category filter link clicked", { handle, title, currentCollection: params.collection, timestamp: new Date().toISOString() })
+  }
+
   return (
     <div className={cn("px-3 py-4 rounded-lg bg-muted", className)}>
       <h3 className="mb-4 font-semibold">
@@ -35,6 +39,7 @@ export function CategoryFilter({ categories, className }: CategoryFilterProps) {
                 aria-pressed={isSelected}
                 aria-label={`Filter by category: ${category.title}`}
                 prefetch
+                onClick={() => handleCategoryClick(category.handle, category.title)}
               >
                 {category.title}
               </Link>
