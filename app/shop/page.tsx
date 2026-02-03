@@ -1,16 +1,11 @@
-import { getProducts } from "@/lib/hygraph"
-import type { Metadata, Product } from "@/lib/hygraph/types"
+"use client"
+
+import { useEffect, useState } from "react"
+import type { Product } from "@/lib/hygraph/types"
 import Image from "next/image"
 import Link from "next/link"
-import { cn } from "@/lib/utils"
 import { FeaturedProductLabel } from "@/components/products/featured-product-label"
-
-export const metadata: Metadata = {
-  title: "Shop",
-  description: "Browse our collection of art and design products",
-}
-
-export const revalidate = 60
+import { useSortContext } from "./layout"
 
 function ProductCard({ product }: { product: Product }) {
   return (
@@ -31,8 +26,31 @@ function ProductCard({ product }: { product: Product }) {
   )
 }
 
-export default async function ShopPage() {
-  const products = await getProducts({ limit: 50 })
+function sortProducts(products: Product[], sortBy: string): Product[] {
+  const sorted = [...products]
+  
+  switch (sortBy) {
+    case "a-z":
+      return sorted.sort((a, b) => a.title.localeCompare(b.title))
+    case "z-a":
+      return sorted.sort((a, b) => b.title.localeCompare(a.title))
+    case "newest":
+    default:
+      return sorted
+  }
+}
+
+interface ShopPageProps {
+  initialProducts: Product[]
+}
+
+export default function ShopPage({ initialProducts }: ShopPageProps) {
+  const { sortBy } = useSortContext()
+  const [sortedProducts, setSortedProducts] = useState(initialProducts)
+
+  useEffect(() => {
+    setSortedProducts(sortProducts(initialProducts, sortBy))
+  }, [sortBy, initialProducts])
 
   return (
     <div className="space-y-8">
@@ -41,9 +59,9 @@ export default async function ShopPage() {
         <p className="text-muted-foreground mt-2 hidden md:block">Explore our complete collection</p>
       </div>
 
-      {products.length > 0 ? (
+      {sortedProducts.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-          {products.map((product) => (
+          {sortedProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
