@@ -5,13 +5,11 @@ import "./globals.css"
 import { Toaster } from "sonner"
 import { NuqsAdapter } from "nuqs/adapters/next/app"
 import { CartProvider } from "@/components/cart/cart-context"
-import { DebugGrid } from "@/components/debug-grid"
 import { getCollections } from "@/lib/hygraph"
 import { Header } from "../components/layout/header"
 import dynamic from "next/dynamic"
 import { V0Provider } from "../lib/context"
 import { cn } from "../lib/utils"
-import { HygraphSetupBanner } from "@/components/hygraph-setup-banner"
 import { TooltipProvider } from "@/components/ui/tooltip"
 
 const V0Setup = dynamic(() => import("@/components/v0-setup"))
@@ -93,8 +91,6 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
   const collections = await getCollections()
-  const isHygraphConfigured = !!(process.env.HYGRAPH_ENDPOINT || process.env.NEXT_PUBLIC_HYGRAPH_ENDPOINT)
-  const isDevelopment = process.env.NODE_ENV === "development"
 
   return (
     <html lang="en">
@@ -108,10 +104,8 @@ export default async function RootLayout({
               <NuqsAdapter>
                 <Header collections={collections} />
                 <main data-vaul-drawer-wrapper="true">
-                  {!isHygraphConfigured && <HygraphSetupBanner />}
                   {children}
                 </main>
-                {isDevelopment && <DebugGrid />}
                 <Toaster closeButton position="bottom-right" />
               </NuqsAdapter>
             </TooltipProvider>

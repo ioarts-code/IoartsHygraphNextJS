@@ -1,8 +1,10 @@
 import type { Metadata } from "next"
 import { getCollection, getCollections, getCollectionProducts } from "@/lib/hygraph"
 import { notFound } from "next/navigation"
-import { ProductGrid } from "../components/product-grid"
-import { LatestProductCard } from "@/components/products/latest-product-card"
+import Image from "next/image"
+import Link from "next/link"
+import { cn } from "@/lib/utils"
+import { FeaturedProductLabel } from "@/components/products/featured-product-label"
 
 export const revalidate = 60
 
@@ -32,6 +34,25 @@ export async function generateMetadata(props: {
   }
 }
 
+function ProductCard({ product }: { product: any }) {
+  return (
+    <div className="relative">
+      <Link href={`/product/${product.handle}`} className="block w-full aspect-square" prefetch>
+        <Image
+          src={product.featuredImage?.url || "/placeholder.svg"}
+          alt={product.featuredImage?.altText || product.title}
+          width={1000}
+          height={1000}
+          className="object-contain xl:object-cover size-full"
+        />
+      </Link>
+      <div className="absolute flex p-sides inset-0 items-end pointer-events-none justify-end">
+        <FeaturedProductLabel className="pointer-events-auto" product={product} />
+      </div>
+    </div>
+  )
+}
+
 export default async function CollectionPage(props: {
   params: Promise<{ collection: string }>
 }) {
@@ -57,11 +78,11 @@ export default async function CollectionPage(props: {
       </div>
 
       {products.length > 0 ? (
-        <ProductGrid>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {products.map((product) => (
-            <LatestProductCard key={product.id} product={product} />
+            <ProductCard key={product.id} product={product} />
           ))}
-        </ProductGrid>
+        </div>
       ) : (
         <div className="flex items-center justify-center min-h-[40vh]">
           <p className="text-muted-foreground">No products in this collection</p>
