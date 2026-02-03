@@ -5,7 +5,7 @@ import type { Product } from "@/lib/hygraph/types"
 import Image from "next/image"
 import Link from "next/link"
 import { FeaturedProductLabel } from "@/components/products/featured-product-label"
-import { useSortContext } from "./layout"
+import { useSortContext } from "./layout-client"
 
 function ProductCard({ product }: { product: Product }) {
   return (

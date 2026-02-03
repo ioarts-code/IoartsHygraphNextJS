@@ -27,8 +27,6 @@ export function useSortContext() {
   }
   return context
 }
-
-function ShopLinksComponent({ collections, className }: { collections: Collection[]; className?: string }) {
   return (
     <div className={cn("bg-white dark:bg-card rounded-lg p-4 w-full max-w-xs lg:max-w-sm", className)}>
       <h4 className="text-lg font-extrabold md:text-xl text-foreground mb-4">Filter</h4>
