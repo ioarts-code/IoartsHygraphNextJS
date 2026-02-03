@@ -1,10 +1,11 @@
+import React from "react"
 import { Footer } from './footer';
 
 export const PageLayout = ({ children, className }: { children: React.ReactNode; className?: string }) => {
   return (
-    <div className={className}>
-      <main>{children}</main>
+    <>
+      <main className={className}>{children}</main>
       <Footer />
-    </div>
+    </>
   );
 };
