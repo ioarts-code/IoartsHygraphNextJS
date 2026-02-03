@@ -2,10 +2,12 @@
 
 import { useQueryState, parseAsArrayOf, parseAsString } from 'nuqs';
 import { useParams } from 'next/navigation';
+import { useCallback, useTransition } from 'react';
 
 export function useFilterCount() {
   const params = useParams<{ collection: string }>();
   const [color] = useQueryState('fcolor', parseAsArrayOf(parseAsString).withDefault([]));
+  const [, startTransition] = useTransition();
 
   // Count active filters
   let count = 0;
