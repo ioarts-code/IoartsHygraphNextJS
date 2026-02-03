@@ -9,7 +9,7 @@ export const revalidate = 60
 
 function ShopLinksComponent({ collections, className }: { collections: Collection[]; className?: string }) {
   return (
-    <div className={cn("bg-white dark:bg-card rounded-lg p-6", className)}>
+    <div className={cn("bg-white dark:bg-card rounded-lg p-4 w-fit", className)}>
       <h4 className="text-lg font-extrabold md:text-xl text-foreground mb-4">Filter</h4>
       <ul className="flex flex-col gap-2">
         {collections.map((item, index) => (
@@ -17,7 +17,7 @@ function ShopLinksComponent({ collections, className }: { collections: Collectio
             <Link 
               href={`/shop/${item.handle}`} 
               prefetch
-              className="text-foreground hover:text-foreground/70 transition-colors text-sm md:text-base"
+              className="text-foreground hover:text-foreground/70 transition-colors text-sm md:text-base whitespace-nowrap"
             >
               {item.title}
             </Link>
