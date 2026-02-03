@@ -18,7 +18,7 @@ const SORT_OPTIONS = [
 
 function ShopLinksComponent({ collections, className }: { collections: Collection[]; className?: string }) {
   return (
-    <div className={cn("bg-white dark:bg-card rounded-lg p-4 w-full", className)}>
+    <div className={cn("bg-white dark:bg-card rounded-lg p-4 w-full max-w-xs lg:max-w-sm", className)}>
       <h4 className="text-lg font-extrabold md:text-xl text-foreground mb-4">Filter</h4>
       <ul className="flex flex-col gap-2">
         {collections.map((item, index) => (
@@ -39,7 +39,7 @@ function ShopLinksComponent({ collections, className }: { collections: Collectio
 
 function SortComponent({ className }: { className?: string }) {
   return (
-    <div className={cn("bg-white dark:bg-card rounded-lg p-4 w-full", className)}>
+    <div className={cn("bg-white dark:bg-card rounded-lg p-4 w-full max-w-xs lg:max-w-sm", className)}>
       <h4 className="text-lg font-extrabold md:text-xl text-foreground mb-4">Sort</h4>
       <ul className="flex flex-col gap-2">
         {SORT_OPTIONS.map((option) => (
@@ -62,13 +62,13 @@ export default async function ShopLayout({ children }: { children: React.ReactNo
   return (
     <PageLayout>
       <div className="grid grid-cols-12 gap-sides">
-        <aside className="col-span-3 max-md:hidden">
+        <aside className="hidden lg:block lg:col-span-3">
           <div className="sticky top-24 space-y-4">
             <ShopLinksComponent collections={collections} />
             <SortComponent />
           </div>
         </aside>
-        <div className="col-span-9 max-md:col-span-12">
+        <div className="col-span-12 lg:col-span-9">
           {children}
         </div>
       </div>
