@@ -1,51 +1,36 @@
-import { storeCatalog } from "@/lib/hygraph/constants"
-import ProductList from "./components/product-list"
+import { getProducts } from "@/lib/hygraph"
 import type { Metadata } from "next"
-import { Suspense } from "react"
-import ResultsControls from "./components/results-controls"
 import { ProductGrid } from "./components/product-grid"
-import { ProductCardSkeleton } from "./components/product-card-skeleton"
+import { LatestProductCard } from "@/components/products/latest-product-card"
 
 export const metadata: Metadata = {
-  title: "Shop All Products",
-  description:
-    "Browse our complete collection of premium art and design products. Find unique pieces that inspire creativity.",
-  openGraph: {
-    title: "Shop All Products | ioarts.ink",
-    description: "Browse our complete collection of premium art and design products.",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Shop All Products | ioarts.ink",
-    description: "Browse our complete collection of premium art and design products.",
-  },
+  title: "Shop",
+  description: "Browse our collection of art and design products",
 }
 
-// Enable ISR with 1 minute revalidation
 export const revalidate = 60
 
-export default async function Shop(props: {
-  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>
-}) {
-  const searchParams = await props.searchParams
+export default async function ShopPage() {
+  const products = await getProducts({ limit: 50 })
 
   return (
-    <>
-      <Suspense
-        fallback={
-          <>
-            <ResultsControls className="max-md:hidden" collections={[]} products={[]} />
-            <ProductGrid>
-              {Array.from({ length: 12 }).map((_, index) => (
-                <ProductCardSkeleton key={index} />
-              ))}
-            </ProductGrid>
-          </>
-        }
-      >
-        <ProductList collection={storeCatalog.rootCategoryId} searchParams={searchParams} />
-      </Suspense>
-    </>
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-4xl font-bold tracking-tight">Shop All</h1>
+        <p className="text-muted-foreground mt-2">Explore our complete collection</p>
+      </div>
+
+      {products.length > 0 ? (
+        <ProductGrid>
+          {products.map((product) => (
+            <LatestProductCard key={product.id} product={product} />
+          ))}
+        </ProductGrid>
+      ) : (
+        <div className="flex items-center justify-center min-h-[40vh]">
+          <p className="text-muted-foreground">No products available</p>
+        </div>
+      )}
+    </div>
   )
 }

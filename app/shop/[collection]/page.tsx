@@ -1,13 +1,14 @@
 import type { Metadata } from "next"
-import { getCollection, getCollections } from "@/lib/hygraph"
+import { getCollection, getCollections, getCollectionProducts } from "@/lib/hygraph"
 import { notFound } from "next/navigation"
-import ProductList from "../components/product-list"
+import { ProductGrid } from "../components/product-grid"
+import { LatestProductCard } from "@/components/products/latest-product-card"
 
-// Generate static params for all collections at build time
+export const revalidate = 60
+
 export async function generateStaticParams() {
   try {
     const collections = await getCollections()
-
     return collections.map((collection) => ({
       collection: collection.handle,
     }))
@@ -17,41 +18,55 @@ export async function generateStaticParams() {
   }
 }
 
-// Enable ISR with 1 minute revalidation
-export const revalidate = 60
-
-export async function generateMetadata(props: { params: { collection: string } }): Promise<Metadata> {
-  const { collection } = props.params
+export async function generateMetadata(props: {
+  params: Promise<{ collection: string }>
+}): Promise<Metadata> {
+  const { collection } = await props.params
   const collectionData = await getCollection(collection)
 
   if (!collectionData) return notFound()
 
-  const title = collectionData.seo?.title || collectionData.title
-  const description =
-    collectionData.seo?.description || collectionData.description || `${collectionData.title} products`
-
   return {
-    title,
-    description,
-    openGraph: {
-      title: `${title} | ioarts.ink`,
-      description,
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${title} | ioarts.ink`,
-      description,
-    },
+    title: collectionData.title,
+    description: collectionData.description,
   }
 }
 
-export default async function ShopCategory(props: {
+export default async function CollectionPage(props: {
   params: Promise<{ collection: string }>
-  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
   const { collection } = await props.params
-  const searchParams = await props.searchParams
+  const collectionData = await getCollection(collection)
 
-  return <ProductList collection={collection} searchParams={searchParams} />
+  if (!collectionData) {
+    notFound()
+  }
+
+  const products = await getCollectionProducts({
+    collection,
+    limit: 50,
+  })
+
+  return (
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-4xl font-bold tracking-tight">{collectionData.title}</h1>
+        {collectionData.description && (
+          <p className="text-muted-foreground mt-2">{collectionData.description}</p>
+        )}
+      </div>
+
+      {products.length > 0 ? (
+        <ProductGrid>
+          {products.map((product) => (
+            <LatestProductCard key={product.id} product={product} />
+          ))}
+        </ProductGrid>
+      ) : (
+        <div className="flex items-center justify-center min-h-[40vh]">
+          <p className="text-muted-foreground">No products in this collection</p>
+        </div>
+      )}
+    </div>
+  )
 }
