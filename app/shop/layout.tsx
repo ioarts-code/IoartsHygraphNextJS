@@ -17,7 +17,7 @@ function ShopLinksComponent({ collections, className }: { collections: Collectio
             <Link 
               href={`/shop/${item.handle}`} 
               prefetch
-              className="text-foreground hover:text-foreground/70 transition-colors text-sm md:text-base whitespace-nowrap"
+              className="block px-3 py-2 bg-black dark:bg-black text-white hover:bg-black/80 transition-colors text-sm md:text-base whitespace-nowrap rounded"
             >
               {item.title}
             </Link>
