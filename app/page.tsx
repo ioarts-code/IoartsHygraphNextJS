@@ -186,7 +186,7 @@ export default async function Home() {
               <p className="font-extrabold text-3xl pr-8">
                 {"illustrations that make sense. What about digital illustrations for your products? Make every product yours for real."}
               </p>
-              <p className="text-xs text-muted-foreground mt-3 flex items-center gap-1">
+              <p className="text-base text-muted-foreground mt-3 flex items-center gap-1">
                 Some products on this site are copyrighted <Copyright className="w-3 h-3" /> and not for sale.
               </p>
             </div>
