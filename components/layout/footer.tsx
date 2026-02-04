@@ -32,7 +32,7 @@ export async function Footer() {
           <span className="mt-3 italic font-semibold md:hidden">Refined. Minimal. Never boring.</span>
         </div>
         <div className="flex justify-between max-md:contents text-muted-foreground">
-          <SidebarLinks className="max-w-[450px] w-full max-md:flex-col" size="base" invert />
+          <SidebarLinks className="max-w-[450px] w-full max-md:flex-col gap-4" size="base" invert variant="text" />
           <p className="text-base">{new Date().getFullYear()}© — All rights reserved</p>
         </div>
       </div>
