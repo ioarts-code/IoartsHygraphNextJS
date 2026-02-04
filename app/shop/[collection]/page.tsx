@@ -72,9 +72,6 @@ export default async function CollectionPage(props: {
     <div className="space-y-8">
       <div>
         <h1 className="text-4xl font-bold tracking-tight">{collectionData.title}</h1>
-        {collectionData.description && (
-          <p className="text-muted-foreground mt-2 hidden md:block">{collectionData.description}</p>
-        )}
       </div>
 
       {products.length > 0 ? (
