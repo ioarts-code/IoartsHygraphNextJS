@@ -108,13 +108,13 @@ export function ShopLayoutClient({ children, collections, products }: ShopLayout
     <SortContext.Provider value={{ sortBy, setSortBy, products }}>
       <div className="p-sides">
         <div className="grid grid-cols-12 gap-sides">
-          <aside className="hidden lg:block lg:col-span-3">
+          <aside className="hidden lg:block lg:col-span-2">
             <div className="sticky top-24 space-y-4">
               <FilterComponent collections={collections} />
               <SortComponent />
             </div>
           </aside>
-          <div className="col-span-12 lg:col-span-9">
+          <div className="col-span-12 lg:col-span-10">
             {children}
           </div>
         </div>
