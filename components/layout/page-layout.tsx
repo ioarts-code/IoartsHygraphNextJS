@@ -4,7 +4,7 @@ import { Footer } from './footer'
 export const PageLayout = async ({ children, className }: { children: React.ReactNode; className?: string }) => {
   return (
     <>
-      <main className={className}>{children}</main>
+      {children}
       <Footer />
     </>
   )
