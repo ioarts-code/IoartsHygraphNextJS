@@ -119,7 +119,7 @@ export default async function Home() {
 
   try {
     const allProducts = await getProducts({})
-    featuredProducts = allProducts.slice(0, 8)
+    featuredProducts = allProducts.slice(0, 9)
   } catch (error) {
     console.error("Error fetching products:", error)
     featuredProducts = []
