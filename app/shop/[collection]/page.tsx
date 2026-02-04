@@ -69,7 +69,7 @@ export default async function CollectionPage(props: {
   })
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 pt-12">
       {products.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {products.map((product) => (
