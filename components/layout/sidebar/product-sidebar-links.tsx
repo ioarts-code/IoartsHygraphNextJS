@@ -3,7 +3,11 @@
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 
-const sidebarLinks: { href: string; label: string; external?: boolean }[] = []
+const sidebarLinks: { href: string; label: string; external?: boolean }[] = [
+  { href: "/contact", label: "Contact" },
+  { href: "/terms-of-sale", label: "Terms of Sale" },
+  { href: "/privacy-policy", label: "Privacy Policy" },
+]
 
 interface SidebarLinksProps {
   className?: string
