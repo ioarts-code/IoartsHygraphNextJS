@@ -183,7 +183,7 @@ export default async function Home() {
         <aside className="max-md:hidden col-span-4 h-screen sticky top-0 p-sides pt-top-spacing flex flex-col justify-between">
           <div>
             <div className="mt-5 text-base leading-tight">
-              <p className="font-black text-4xl pr-8 uppercase">
+              <p className="font-black text-3xl pr-8 uppercase">
                 {"illustrations that make sense. What about digital illustrations for your products? Make every product yours for real."}
               </p>
               <p className="text-base text-muted-foreground mt-3 max-w-xs">
