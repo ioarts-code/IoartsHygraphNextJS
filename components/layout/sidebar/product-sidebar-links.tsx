@@ -29,7 +29,7 @@ export function SidebarLinks({ className, size = "sm", invert = false, variant =
           : size === "sm" ? "text-xs" : "text-sm"
         
         const colorClass = variant === "text"
-          ? invert ? "text-background" : "text-background/60"
+          ? invert ? "text-background/40" : "text-background/60"
           : invert ? "bg-background text-foreground hover:bg-background/80" : "bg-white text-foreground hover:bg-white/80"
 
         return (
