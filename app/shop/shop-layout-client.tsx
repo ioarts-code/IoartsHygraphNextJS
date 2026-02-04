@@ -4,7 +4,7 @@ import type React from "react"
 import { createContext, useState, useContext } from "react"
 import { PageLayout } from "@/components/layout/page-layout"
 import Link from "next/link"
-import type { Collection } from "@/lib/hygraph/types"
+import type { Collection, Product } from "@/lib/hygraph/types"
 import { cn } from "@/lib/utils"
 
 const SORT_OPTIONS = [
@@ -16,6 +16,7 @@ const SORT_OPTIONS = [
 interface SortContextType {
   sortBy: string
   setSortBy: (value: string) => void
+  products: Product[]
 }
 
 const SortContext = createContext<SortContextType | undefined>(undefined)
@@ -78,13 +79,14 @@ function SortComponent({ className }: { className?: string }) {
 interface ShopLayoutClientProps {
   children: React.ReactNode
   collections: Collection[]
+  products: Product[]
 }
 
-export function ShopLayoutClient({ children, collections }: ShopLayoutClientProps) {
+export function ShopLayoutClient({ children, collections, products }: ShopLayoutClientProps) {
   const [sortBy, setSortBy] = useState("newest")
 
   return (
-    <SortContext.Provider value={{ sortBy, setSortBy }}>
+    <SortContext.Provider value={{ sortBy, setSortBy, products }}>
       <PageLayout>
         <div className="grid grid-cols-12 gap-sides">
           <aside className="hidden lg:block lg:col-span-3">

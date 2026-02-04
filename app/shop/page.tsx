@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useMemo } from "react"
 import type { Product } from "@/lib/hygraph/types"
 import Image from "next/image"
 import Link from "next/link"
@@ -40,17 +40,9 @@ function sortProducts(products: Product[], sortBy: string): Product[] {
   }
 }
 
-interface ShopPageProps {
-  initialProducts: Product[]
-}
-
-export default function ShopPage({ initialProducts }: ShopPageProps) {
-  const { sortBy } = useSortContext()
-  const [sortedProducts, setSortedProducts] = useState(initialProducts)
-
-  useEffect(() => {
-    setSortedProducts(sortProducts(initialProducts, sortBy))
-  }, [sortBy, initialProducts])
+export default function ShopPage() {
+  const { sortBy, products } = useSortContext()
+  const sortedProducts = useMemo(() => sortProducts(products, sortBy), [products, sortBy])
 
   return (
     <div className="space-y-8">
@@ -59,7 +51,7 @@ export default function ShopPage({ initialProducts }: ShopPageProps) {
         <p className="text-muted-foreground mt-2 hidden md:block">Explore our complete collection</p>
       </div>
 
-      {sortedProducts.length > 0 ? (
+      {sortedProducts && sortedProducts.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {sortedProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
