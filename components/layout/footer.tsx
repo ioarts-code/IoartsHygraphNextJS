@@ -24,7 +24,7 @@ export async function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white text-2xl font-bold transition-opacity hover:opacity-80 whitespace-nowrap"
-                style={{ fontFamily: "var(--font-sedgwick-ave)" }}
+                style={{ fontFamily: "var(--font-sedgwick-ave)", letterSpacing: "0.15em", wordSpacing: "0.3em" }}
               >
                 {link.label}
               </a>
