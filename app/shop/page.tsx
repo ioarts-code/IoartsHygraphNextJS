@@ -27,6 +27,10 @@ function ProductCard({ product }: { product: Product }) {
 }
 
 function sortProducts(products: Product[], sortBy: string): Product[] {
+  if (!products || products.length === 0) {
+    return []
+  }
+  
   const sorted = [...products]
   
   switch (sortBy) {
@@ -42,7 +46,12 @@ function sortProducts(products: Product[], sortBy: string): Product[] {
 
 export default function ShopPage() {
   const { sortBy, products } = useSortContext()
-  const sortedProducts = useMemo(() => sortProducts(products, sortBy), [products, sortBy])
+  const sortedProducts = useMemo(() => {
+    console.log("[v0] ShopPage - sortBy:", sortBy, "products:", products?.length)
+    return sortProducts(products || [], sortBy)
+  }, [products, sortBy])
+
+  console.log("[v0] ShopPage - rendering with sortedProducts:", sortedProducts?.length)
 
   return (
     <div className="space-y-8">
