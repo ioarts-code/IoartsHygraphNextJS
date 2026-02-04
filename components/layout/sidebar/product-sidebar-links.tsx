@@ -4,8 +4,7 @@ import Link from "next/link"
 import { cn } from "@/lib/utils"
 
 const sidebarLinks: { href: string; label: string; external?: boolean }[] = [
-  { href: "https://www.deviantart.com/", label: "DeviantArt", external: true },
-  { href: "https://www.etsy.com/", label: "Etsy", external: true },
+  { href: "/contact", label: "Contact" },
   { href: "/terms-of-sale", label: "Terms of Sale" },
   { href: "/privacy-policy", label: "Privacy Policy" },
 ]
