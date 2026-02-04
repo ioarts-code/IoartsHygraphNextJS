@@ -1,17 +1,16 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
+import { Sedgwick_Ave_Display } from "next/font/google"
 import "./globals.css"
 import { Toaster } from "sonner"
 import { NuqsAdapter } from "nuqs/adapters/next/app"
 import { CartProvider } from "@/components/cart/cart-context"
-import { DebugGrid } from "@/components/debug-grid"
 import { getCollections } from "@/lib/hygraph"
 import { Header } from "../components/layout/header"
 import dynamic from "next/dynamic"
 import { V0Provider } from "../lib/context"
 import { cn } from "../lib/utils"
-import { HygraphSetupBanner } from "@/components/hygraph-setup-banner"
 import { TooltipProvider } from "@/components/ui/tooltip"
 
 const V0Setup = dynamic(() => import("@/components/v0-setup"))
@@ -25,6 +24,12 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+})
+
+const sedgwickAveDisplay = Sedgwick_Ave_Display({
+  variable: "--font-sedgwick-ave",
+  weight: "400",
   subsets: ["latin"],
 })
 
@@ -93,13 +98,11 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
   const collections = await getCollections()
-  const isHygraphConfigured = !!(process.env.HYGRAPH_ENDPOINT || process.env.NEXT_PUBLIC_HYGRAPH_ENDPOINT)
-  const isDevelopment = process.env.NODE_ENV === "development"
 
   return (
     <html lang="en">
       <body
-        className={cn(geistSans.variable, geistMono.variable, "antialiased min-h-screen", { "is-v0": isV0 })}
+        className={cn(geistSans.variable, geistMono.variable, sedgwickAveDisplay.variable, "antialiased min-h-screen", { "is-v0": isV0 })}
         suppressHydrationWarning
       >
         <V0Provider isV0={isV0}>
@@ -107,11 +110,7 @@ export default async function RootLayout({
             <TooltipProvider>
               <NuqsAdapter>
                 <Header collections={collections} />
-                <main data-vaul-drawer-wrapper="true">
-                  {!isHygraphConfigured && <HygraphSetupBanner />}
-                  {children}
-                </main>
-                {isDevelopment && <DebugGrid />}
+                {children}
                 <Toaster closeButton position="bottom-right" />
               </NuqsAdapter>
             </TooltipProvider>

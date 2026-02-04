@@ -1,23 +1,28 @@
+"use client"
+
 import Link from "next/link"
 import type { Collection } from "@/lib/hygraph/types"
 import { cn } from "@/lib/utils"
 
 interface ShopLinksProps {
   collections: Collection[]
-  align?: "left" | "right"
   label?: string
   className?: string
+  align?: "left" | "right"
 }
 
-export function ShopLinks({ collections, label = "Shop", align = "left", className }: ShopLinksProps) {
+export function ShopLinks({ collections, label, className, align = "left" }: ShopLinksProps) {
   return (
-    <div className={cn(align === "right" ? "text-right" : "text-left", className)}>
-      <h4 className="text-lg font-extrabold md:text-xl">{label}</h4>
-
-      <ul className="flex flex-col gap-1.5 leading-5 mt-5">
+    <div className={cn("flex flex-col gap-2", className)}>
+      {label && <p className="text-sm font-semibold mb-1">{label}</p>}
+      <ul className={cn("flex flex-wrap gap-2", align === "right" && "justify-end")}>
         {collections.map((item, index) => (
           <li key={`${item.handle}-${index}`}>
-            <Link href={`/shop/${item.handle}`} prefetch>
+            <Link
+              href={`/shop/${item.handle}`}
+              prefetch
+              className="block px-3 py-2 bg-white text-foreground hover:bg-white/80 transition-colors text-xs md:text-sm whitespace-nowrap rounded font-bold"
+            >
               {item.title}
             </Link>
           </li>

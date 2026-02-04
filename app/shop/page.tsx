@@ -1,51 +1,67 @@
-import { storeCatalog } from "@/lib/hygraph/constants"
-import ProductList from "./components/product-list"
-import type { Metadata } from "next"
-import { Suspense } from "react"
-import ResultsControls from "./components/results-controls"
-import { ProductGrid } from "./components/product-grid"
-import { ProductCardSkeleton } from "./components/product-card-skeleton"
+"use client"
 
-export const metadata: Metadata = {
-  title: "Shop All Products",
-  description:
-    "Browse our complete collection of premium art and design products. Find unique pieces that inspire creativity.",
-  openGraph: {
-    title: "Shop All Products | ioarts.ink",
-    description: "Browse our complete collection of premium art and design products.",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Shop All Products | ioarts.ink",
-    description: "Browse our complete collection of premium art and design products.",
-  },
+import { useMemo } from "react"
+import type { Product } from "@/lib/hygraph/types"
+import Image from "next/image"
+import Link from "next/link"
+import { FeaturedProductLabel } from "@/components/products/featured-product-label"
+import { useSortContext } from "./shop-layout-client"
+
+function ProductCard({ product }: { product: Product }) {
+  return (
+    <div className="relative">
+      <Link href={`/product/${product.handle}`} className="block w-full aspect-square" prefetch>
+        <Image
+          src={product.featuredImage?.url || "/placeholder.svg"}
+          alt={product.featuredImage?.altText || product.title}
+          width={1000}
+          height={1000}
+          loading="eager"
+          className="object-contain xl:object-cover size-full -translate-y-8"
+        />
+      </Link>
+      <div className="absolute flex p-sides inset-0 items-end pointer-events-none justify-end">
+        <FeaturedProductLabel className="pointer-events-auto" product={product} />
+      </div>
+    </div>
+  )
 }
 
-// Enable ISR with 1 minute revalidation
-export const revalidate = 60
+function sortProducts(products: Product[], sortBy: string): Product[] {
+  const sorted = [...products]
+  
+  switch (sortBy) {
+    case "a-z":
+      return sorted.sort((a, b) => a.title.localeCompare(b.title))
+    case "z-a":
+      return sorted.sort((a, b) => b.title.localeCompare(a.title))
+    case "newest":
+    default:
+      return sorted
+  }
+}
 
-export default async function Shop(props: {
-  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>
-}) {
-  const searchParams = await props.searchParams
+export default function ShopPage() {
+  const { sortBy, products } = useSortContext()
+  const sortedProducts = useMemo(() => sortProducts(products, sortBy), [products, sortBy])
 
   return (
-    <>
-      <Suspense
-        fallback={
-          <>
-            <ResultsControls className="max-md:hidden" collections={[]} products={[]} />
-            <ProductGrid>
-              {Array.from({ length: 12 }).map((_, index) => (
-                <ProductCardSkeleton key={index} />
-              ))}
-            </ProductGrid>
-          </>
-        }
-      >
-        <ProductList collection={storeCatalog.rootCategoryId} searchParams={searchParams} />
-      </Suspense>
-    </>
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-4xl font-bold tracking-tight">Shop All</h1>
+      </div>
+
+      {sortedProducts && sortedProducts.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          {sortedProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      ) : (
+        <div className="flex items-center justify-center min-h-[40vh]">
+          <p className="text-muted-foreground">No products available</p>
+        </div>
+      )}
+    </div>
   )
 }

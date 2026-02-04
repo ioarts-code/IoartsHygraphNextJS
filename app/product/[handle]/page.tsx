@@ -12,9 +12,7 @@ import {
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb"
 import Link from "next/link"
-import { SidebarLinks } from "@/components/layout/sidebar/product-sidebar-links"
 import { storeCatalog } from "@/lib/hygraph/constants"
-import Prose from "@/components/prose"
 import { Suspense } from "react"
 import { PageLayout } from "@/components/layout/page-layout"
 import { MobileGallerySlider } from "./components/mobile-gallery-slider"
@@ -181,25 +179,21 @@ export default async function ProductPage(props: { params: Promise<{ handle: str
                   {collection.title}
                 </p>
               )}
-              <p className="text-sm md:text-base lg:text-lg leading-relaxed text-pretty whitespace-pre-wrap col-span-full font-normal my-3.5">
-                {product.description}
-              </p>
+              <div className="prose prose-sm max-w-none space-y-4 my-3.5">
+                {/* Product description HTML */}
+                <div dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} />
+              </div>
               <ExternalLinkButtons size="lg" className="col-span-full" />
             </div>
           </div>
 
-          <Prose className="col-span-full md:col-span-7 md:col-start-6">
-            {/* Product description HTML */}
-            <div dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} />
-          </Prose>
+          <div className="col-span-full md:col-span-7 md:col-start-6"></div>
 
           {collection && (
             <p className="text-xs 2xl:text-sm text-foreground/70 leading-tight mb-4 max-md:hidden mt-4">
               {collection.title}
             </p>
           )}
-
-          <SidebarLinks className="flex-col-reverse max-md:hidden py-sides w-full max-w-[408px] pr-sides max-md:pr-0 max-md:py-0" />
         </div>
 
         {/* Desktop Gallery */}
