@@ -2,7 +2,6 @@
 
 import type React from "react"
 import { createContext, useState, useContext } from "react"
-import { PageLayout } from "@/components/layout/page-layout"
 import Link from "next/link"
 import type { Collection, Product } from "@/lib/hygraph/types"
 import { cn } from "@/lib/utils"
@@ -87,19 +86,17 @@ export function ShopLayoutClient({ children, collections, products }: ShopLayout
 
   return (
     <SortContext.Provider value={{ sortBy, setSortBy, products }}>
-      <PageLayout>
-        <div className="grid grid-cols-12 gap-sides">
-          <aside className="hidden lg:block lg:col-span-3">
-            <div className="sticky top-24 space-y-4">
-              <ShopLinksComponent collections={collections} />
-              <SortComponent />
-            </div>
-          </aside>
-          <div className="col-span-12 lg:col-span-9">
-            {children}
+      <div className="grid grid-cols-12 gap-sides">
+        <aside className="hidden lg:block lg:col-span-3">
+          <div className="sticky top-24 space-y-4">
+            <ShopLinksComponent collections={collections} />
+            <SortComponent />
           </div>
+        </aside>
+        <div className="col-span-12 lg:col-span-9">
+          {children}
         </div>
-      </PageLayout>
+      </div>
     </SortContext.Provider>
   )
 }

@@ -1,13 +1,11 @@
-import React, { Suspense } from "react"
+import React from "react"
 import { Footer } from './footer'
 
-export const PageLayout = ({ children, className }: { children: React.ReactNode; className?: string }) => {
+export const PageLayout = async ({ children, className }: { children: React.ReactNode; className?: string }) => {
   return (
     <>
       <main className={className}>{children}</main>
-      <Suspense fallback={<div />}>
-        <Footer />
-      </Suspense>
+      <Footer />
     </>
   )
 }

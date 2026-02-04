@@ -1,6 +1,7 @@
 import type React from "react"
 import { getCollections, getProducts } from "@/lib/hygraph"
 import { ShopLayoutClient } from "./shop-layout-client"
+import { PageLayout } from "@/components/layout/page-layout"
 
 export const revalidate = 60
 
@@ -15,8 +16,10 @@ export default async function ShopLayout({ children }: ShopLayoutProps) {
   ])
 
   return (
-    <ShopLayoutClient collections={collections} products={products}>
-      {children}
-    </ShopLayoutClient>
+    <PageLayout>
+      <ShopLayoutClient collections={collections} products={products}>
+        {children}
+      </ShopLayoutClient>
+    </PageLayout>
   )
 }
