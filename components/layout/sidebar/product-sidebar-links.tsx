@@ -3,10 +3,7 @@
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 
-const sidebarLinks: { href: string; label: string; external?: boolean }[] = [
-  { href: "https://www.deviantart.com/ioartseu/gallery/all", label: "DeviantArt", external: true },
-  { href: "https://www.etsy.com/shop/ioartseu", label: "Etsy", external: true },
-]
+const sidebarLinks: { href: string; label: string; external?: boolean }[] = []
 
 interface SidebarLinksProps {
   className?: string
