@@ -179,17 +179,15 @@ export default async function ProductPage(props: { params: Promise<{ handle: str
                   {collection.title}
                 </p>
               )}
-              <p className="text-sm md:text-base lg:text-lg leading-relaxed text-pretty whitespace-pre-wrap col-span-full font-normal my-3.5">
-                {product.description}
-              </p>
+              <div className="prose prose-sm max-w-none space-y-4 my-3.5">
+                {/* Product description HTML */}
+                <div dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} />
+              </div>
               <ExternalLinkButtons size="lg" className="col-span-full" />
             </div>
           </div>
 
-          <div className="col-span-full md:col-span-7 md:col-start-6 prose prose-sm max-w-none space-y-4">
-            {/* Product description HTML */}
-            <div dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} />
-          </div>
+          <div className="col-span-full md:col-span-7 md:col-start-6"></div>
 
           {collection && (
             <p className="text-xs 2xl:text-sm text-foreground/70 leading-tight mb-4 max-md:hidden mt-4">
