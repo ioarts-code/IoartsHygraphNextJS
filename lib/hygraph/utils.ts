@@ -76,11 +76,13 @@ export function getFirstSentence(text: string): string {
 }
 
 export function getLabelPosition(index: number): "top-left" | "top-right" | "bottom-left" | "bottom-right" {
-  const positions: Array<"top-left" | "top-right" | "bottom-left" | "bottom-right"> = [
-    "top-left",
-    "top-right",
-    "bottom-left",
-    "bottom-right",
-  ]
-  return positions[index % positions.length]
+  // Alternate between top and bottom positions for each item
+  // Even indices (0, 2, 4...) get top positions
+  // Odd indices (1, 3, 5...) get bottom positions
+  // Left/right alternates independently
+  if (index % 2 === 0) {
+    return index % 4 === 0 ? "top-left" : "top-right"
+  } else {
+    return index % 4 === 1 ? "bottom-left" : "bottom-right"
+  }
 }

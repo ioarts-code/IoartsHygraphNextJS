@@ -180,7 +180,7 @@ export default async function Home() {
   return (
     <PageLayout>
       <div className="contents md:grid md:grid-cols-12 md:gap-sides">
-        <aside className="max-md:hidden col-span-4 p-sides pt-top-spacing flex flex-col justify-between min-h-screen">
+        <aside className="max-md:hidden col-span-4 h-screen sticky top-0 p-sides pt-top-spacing flex flex-col justify-between">
           <div>
             <div className="mt-5 text-base leading-tight">
               <p className="font-extrabold text-3xl pr-8">
