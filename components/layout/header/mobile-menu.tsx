@@ -6,13 +6,29 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { navItems } from "./index"
-import { SidebarLinks } from "../sidebar/product-sidebar-links"
-import { ShopLinks } from "../shop-links"
-import type { Collection } from "@/lib/hygraph/types" // Updated import to use Hygraph types instead of Shopify
+import { SidebarLinks } from "@/components/layout/sidebar/product-sidebar-links"
+import type { Collection } from "@/lib/hygraph/types"
 import { useBodyScrollLock } from "@/lib/hooks/use-body-scroll-lock"
 
 interface MobileMenuProps {
   collections: Collection[]
+}
+
+function MobileShopLinks({ collections }: { collections: Collection[] }) {
+  return (
+    <div className="text-left">
+      <h4 className="text-sm font-extrabold md:text-base mb-3">Categories</h4>
+      <ul className="flex flex-col gap-1.5 leading-5">
+        {collections.map((item, index) => (
+          <li key={`${item.handle}-${index}`}>
+            <Link href={`/shop/${item.handle}`} prefetch className="text-sm">
+              {item.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
 }
 
 export default function MobileMenu({ collections }: MobileMenuProps) {
@@ -104,7 +120,7 @@ export default function MobileMenu({ collections }: MobileMenuProps) {
                   ))}
                 </nav>
 
-                <ShopLinks label="Categories" collections={collections} />
+                <MobileShopLinks collections={collections} />
 
                 <div className="mt-5 mb-6 text-sm leading-tight text-muted-foreground">
                   <p className="italic">Refined. Minimal. Never boring.</p>
@@ -114,7 +130,7 @@ export default function MobileMenu({ collections }: MobileMenuProps) {
                     <p>Elegance with a wink — style first</p>
                   </div>
                 </div>
-                <SidebarLinks className="gap-2 w-full" />
+                <SidebarLinks className="gap-2 w-full" size="sm" />
               </div>
             </motion.div>
           </>
