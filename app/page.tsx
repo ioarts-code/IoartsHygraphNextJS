@@ -183,22 +183,12 @@ export default async function Home() {
         <aside className="max-md:hidden col-span-4 h-screen sticky top-0 p-sides pt-top-spacing flex flex-col justify-between">
           <div>
             <div className="mt-5 text-base leading-tight">
-              <p className="font-extrabold text-3xl pr-8">
+              <p className="font-extrabold text-3xl pr-8 uppercase">
                 {"illustrations that make sense. What about digital illustrations for your products? Make every product yours for real."}
               </p>
               <p className="text-base text-muted-foreground mt-3 max-w-xs">
                 <span className="inline-flex items-center gap-1">Some products on this site are copyrighted <Copyright className="w-3 h-3" /></span> and not for sale.
               </p>
-              <div className="mt-4 inline-block border border-muted-foreground px-4 py-3 rounded">
-                <div className="text-xs text-muted-foreground mb-2">Top Pick</div>
-                <a 
-                  href="/copyright-info"
-                  className="inline-block text-muted-foreground text-lg transition-opacity hover:opacity-80"
-                  style={{ fontFamily: "var(--font-sedgwick-ave)" }}
-                >
-                  View
-                </a>
-              </div>
             </div>
           </div>
           <ShopLinks collections={collections} />
