@@ -34,7 +34,6 @@ function FilterComponent({ collections, className }: { collections: Collection[]
   
   return (
     <div className={cn("bg-white dark:bg-card rounded-lg p-4 w-full max-w-xs lg:max-w-sm", className)}>
-      <h4 className="text-lg font-extrabold md:text-xl text-foreground mb-4">Filter</h4>
       <ul className="flex flex-col gap-2">
         <li>
           <Link 
@@ -74,7 +73,6 @@ function SortComponent({ className }: { className?: string }) {
 
   return (
     <div className={cn("bg-white dark:bg-card rounded-lg p-4 w-full max-w-xs lg:max-w-sm", className)}>
-      <h4 className="text-lg font-extrabold md:text-xl text-foreground mb-4">Sort</h4>
       <ul className="flex flex-col gap-2">
         {SORT_OPTIONS.map((option) => (
           <li key={option.value}>
