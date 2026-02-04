@@ -110,19 +110,6 @@ export function ShopLayoutClient({ children, collections, products }: ShopLayout
   return (
     <SortContext.Provider value={{ sortBy, setSortBy, products }}>
       <div className="p-sides">
-        <div className="flex justify-end gap-2 mb-4">
-          {SOCIAL_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-2 text-xs font-bold rounded bg-black text-white hover:bg-black/80 transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
         <div className="grid grid-cols-12 gap-sides">
           <aside className="hidden lg:block lg:col-span-2">
             <div className="sticky top-24 space-y-4">
