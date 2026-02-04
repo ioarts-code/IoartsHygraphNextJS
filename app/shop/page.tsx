@@ -49,7 +49,6 @@ export default function ShopPage() {
     <div className="space-y-8">
       <div>
         <h1 className="text-4xl font-bold tracking-tight">Shop All</h1>
-        <p className="text-sm text-muted-foreground mt-2">Browse our complete collection</p>
       </div>
 
       {sortedProducts && sortedProducts.length > 0 ? (
