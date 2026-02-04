@@ -189,6 +189,13 @@ export default async function Home() {
               <p className="text-base text-muted-foreground mt-3 max-w-xs">
                 <span className="inline-flex items-center gap-1">Some products on this site are copyrighted <Copyright className="w-3 h-3" /></span> and not for sale.
               </p>
+              <a 
+                href="/copyright-info"
+                className="inline-block mt-4 px-6 py-2 text-muted-foreground text-base transition-opacity hover:opacity-80"
+                style={{ fontFamily: "var(--font-sedgwick-ave)" }}
+              >
+                View
+              </a>
             </div>
           </div>
           <ShopLinks collections={collections} />
