@@ -5,6 +5,7 @@ import { createContext, useState, useContext } from "react"
 import Link from "next/link"
 import type { Collection, Product } from "@/lib/hygraph/types"
 import { cn } from "@/lib/utils"
+import { usePathname } from "next/navigation"
 
 const SORT_OPTIONS = [
   { label: "Newest", value: "newest" },
@@ -28,17 +29,36 @@ export function useSortContext() {
   return context
 }
 
-function ShopLinksComponent({ collections, className }: { collections: Collection[]; className?: string }) {
+function FilterComponent({ collections, className }: { collections: Collection[]; className?: string }) {
+  const pathname = usePathname()
+  
   return (
     <div className={cn("bg-white dark:bg-card rounded-lg p-4 w-full max-w-xs lg:max-w-sm", className)}>
       <h4 className="text-lg font-extrabold md:text-xl text-foreground mb-4">Filter</h4>
       <ul className="flex flex-col gap-2">
+        <li>
+          <Link 
+            href="/shop" 
+            prefetch
+            className={cn("block px-3 py-2 rounded font-bold text-xs md:text-sm whitespace-nowrap transition-colors",
+              pathname === "/shop"
+                ? "bg-black dark:bg-black text-white"
+                : "bg-gray-200 dark:bg-gray-700 text-foreground hover:bg-black/80 hover:text-white"
+            )}
+          >
+            All
+          </Link>
+        </li>
         {collections.map((item, index) => (
           <li key={`${item.handle}-${index}`}>
             <Link 
               href={`/shop/${item.handle}`} 
               prefetch
-              className="block px-3 py-2 bg-black dark:bg-black text-white hover:bg-black/80 transition-colors text-xs md:text-sm whitespace-nowrap rounded font-bold"
+              className={cn("block px-3 py-2 rounded font-bold text-xs md:text-sm whitespace-nowrap transition-colors",
+                pathname === `/shop/${item.handle}`
+                  ? "bg-black dark:bg-black text-white"
+                  : "bg-gray-200 dark:bg-gray-700 text-foreground hover:bg-black/80 hover:text-white"
+              )}
             >
               {item.title}
             </Link>
@@ -90,7 +110,7 @@ export function ShopLayoutClient({ children, collections, products }: ShopLayout
         <div className="grid grid-cols-12 gap-sides">
           <aside className="hidden lg:block lg:col-span-3">
             <div className="sticky top-24 space-y-4">
-              <ShopLinksComponent collections={collections} />
+              <FilterComponent collections={collections} />
               <SortComponent />
             </div>
           </aside>
