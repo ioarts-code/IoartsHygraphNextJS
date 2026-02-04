@@ -42,7 +42,10 @@ function sortProducts(products: Product[], sortBy: string): Product[] {
 }
 
 export default function ShopPage() {
-  const { sortBy, products } = useSortContext()
+  const context = useSortContext()
+  const products = context?.products || []
+  const sortBy = context?.sortBy || "newest"
+  
   const sortedProducts = useMemo(() => sortProducts(products, sortBy), [products, sortBy])
 
   return (
