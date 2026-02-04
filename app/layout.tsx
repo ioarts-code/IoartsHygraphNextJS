@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
+import { Sedgwick_Ave_Display } from "next/font/google"
 import "./globals.css"
 import { Toaster } from "sonner"
 import { NuqsAdapter } from "nuqs/adapters/next/app"
@@ -23,6 +24,12 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+})
+
+const sedgwickAveDisplay = Sedgwick_Ave_Display({
+  variable: "--font-sedgwick-ave",
+  weight: "400",
   subsets: ["latin"],
 })
 
@@ -95,7 +102,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={cn(geistSans.variable, geistMono.variable, "antialiased min-h-screen", { "is-v0": isV0 })}
+        className={cn(geistSans.variable, geistMono.variable, sedgwickAveDisplay.variable, "antialiased min-h-screen", { "is-v0": isV0 })}
         suppressHydrationWarning
       >
         <V0Provider isV0={isV0}>

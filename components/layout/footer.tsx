@@ -23,7 +23,8 @@ export async function Footer() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-2 text-xs font-bold rounded bg-background text-foreground hover:bg-background/80 transition-colors whitespace-nowrap"
+                className="text-white text-2xl font-bold transition-opacity hover:opacity-80 whitespace-nowrap"
+                style={{ fontFamily: "var(--font-sedgwick-ave)" }}
               >
                 {link.label}
               </a>
