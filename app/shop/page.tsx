@@ -16,6 +16,7 @@ function ProductCard({ product }: { product: Product }) {
           alt={product.featuredImage?.altText || product.title}
           width={1000}
           height={1000}
+          loading="eager"
           className="object-contain xl:object-cover size-full -translate-y-8"
         />
       </Link>
@@ -27,10 +28,6 @@ function ProductCard({ product }: { product: Product }) {
 }
 
 function sortProducts(products: Product[], sortBy: string): Product[] {
-  if (!products || products.length === 0) {
-    return []
-  }
-  
   const sorted = [...products]
   
   switch (sortBy) {
@@ -46,12 +43,7 @@ function sortProducts(products: Product[], sortBy: string): Product[] {
 
 export default function ShopPage() {
   const { sortBy, products } = useSortContext()
-  const sortedProducts = useMemo(() => {
-    console.log("[v0] ShopPage - sortBy:", sortBy, "products:", products?.length)
-    return sortProducts(products || [], sortBy)
-  }, [products, sortBy])
-
-  console.log("[v0] ShopPage - rendering with sortedProducts:", sortedProducts?.length)
+  const sortedProducts = useMemo(() => sortProducts(products, sortBy), [products, sortBy])
 
   return (
     <div className="space-y-8">
