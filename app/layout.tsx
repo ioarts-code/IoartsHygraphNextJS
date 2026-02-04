@@ -103,9 +103,7 @@ export default async function RootLayout({
             <TooltipProvider>
               <NuqsAdapter>
                 <Header collections={collections} />
-                <main data-vaul-drawer-wrapper="true">
-                  {children}
-                </main>
+                {children}
                 <Toaster closeButton position="bottom-right" />
               </NuqsAdapter>
             </TooltipProvider>
