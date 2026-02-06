@@ -40,7 +40,7 @@ export function Header({ collections }: HeaderProps) {
         <LogoSvg className="w-auto h-6 max-md:place-self-center md:w-full md:h-auto max-w-96" />
       </Link>
 
-      <nav className="flex gap-2 items-center md:col-span-8 xl:col-span-9 justify-center md:ml-8">
+      <nav className="flex gap-2 items-center md:col-span-8 xl:col-span-9 justify-center md:ml-2">
         <ul className="flex items-center gap-4 p-1 px-3 rounded-sm backdrop-blur-md max-md:hidden bg-black">
           {navItems.map((item) => (
             <li key={item.href}>
