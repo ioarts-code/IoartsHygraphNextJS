@@ -59,11 +59,7 @@ export function ExternalLinkButtons({
               sizeClasses[size],
             )}
           >
-            <span className={cn("font-black", textSizes[size])} style={{
-              fontFamily: "system-ui, -apple-system, sans-serif",
-              fontWeight: "900",
-              letterSpacing: "-0.04em",
-            }}>E</span>
+            <span className={cn("font-bold", textSizes[size])}>E</span>
           </a>
         </TooltipTrigger>
         <TooltipContent>
