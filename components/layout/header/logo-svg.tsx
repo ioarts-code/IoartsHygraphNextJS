@@ -6,16 +6,16 @@ export function LogoSvg({ className }: { className?: string }) {
       viewBox="0 0 200 60"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={cn("w-32 md:w-28 lg:w-24", className)}
+      className={cn("w-40 md:w-36 lg:w-32", className)}
     >
-      <text className="text-5xl"
+      <text
         x="10"
-        y="40"
+        y="45"
         fontFamily="system-ui, -apple-system, sans-serif"
-        fontSize="32"
-        fontWeight="700"
+        fontSize="42"
+        fontWeight="900"
         fill="currentColor"
-        letterSpacing="-0.02em"
+        letterSpacing="-0.04em"
       >
         IOARTS
       </text>
