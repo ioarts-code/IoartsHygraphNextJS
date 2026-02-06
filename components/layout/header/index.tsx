@@ -31,12 +31,12 @@ export function Header({ collections }: HeaderProps) {
   const pathname = usePathname()
 
   return (
-    <header className="grid fixed top-0 left-0 z-50 grid-cols-3 items-center w-full p-sides md:grid-cols-12 md:gap-sides bg-foreground text-background mt-0 px-5">
+    <header className="grid fixed top-0 left-0 z-50 grid-cols-3 items-center w-full p-sides md:grid-cols-12 md:gap-sides bg-foreground text-background mt-0 px-5 py-2">
       <div className="block flex-none md:hidden">
         <MobileMenu collections={collections} />
       </div>
 
-      <Link href="/" className="md:col-span-4 xl:col-span-3" prefetch>
+      <Link href="/" className="md:col-span-4 xl:col-span-3 md:ml-6" prefetch>
         <LogoSvg className="w-auto h-6 max-md:place-self-center md:w-full md:h-auto max-w-96" />
       </Link>
 
