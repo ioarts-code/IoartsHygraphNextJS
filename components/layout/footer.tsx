@@ -23,7 +23,12 @@ export async function Footer() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-base text-muted-foreground transition-opacity hover:opacity-80 whitespace-nowrap"
+                className="text-base text-muted-foreground transition-opacity hover:opacity-80 whitespace-nowrap font-black"
+                style={{
+                  fontFamily: "system-ui, -apple-system, sans-serif",
+                  fontWeight: "900",
+                  letterSpacing: "-0.04em",
+                }}
               >
                 {link.label}
               </a>
