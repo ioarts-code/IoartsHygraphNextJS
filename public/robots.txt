@@ -1,20 +1,26 @@
 # robots.txt for ioarts.ink
-# Allow all bots by default
+# Disallow all pages except homepage and specific policy pages
 User-agent: *
-Allow: /
+Allow: /$
+Allow: /contact
+Allow: /terms-of-sale
+Allow: /privacy-policy
+Disallow: /
 
-# Disallow crawling of admin, API, and internal routes
+# Disallow crawling of admin and API routes
 Disallow: /api/
 Disallow: /admin/
+
+# Disallow query parameters to prevent duplicate content
 Disallow: /*?*sort=
 Disallow: /*?*filter=
 
 # Allow specific search engines for images
 User-agent: Googlebot-Image
-Allow: /
-
-User-agent: Bingbot
-Allow: /
+Allow: /$
+Allow: /contact
+Allow: /terms-of-sale
+Allow: /privacy-policy
 
 # Crawl delay for aggressive bots (in seconds)
 User-agent: AhrefsBot
