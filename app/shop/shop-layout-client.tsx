@@ -38,37 +38,48 @@ function FilterComponent({ collections, className }: { collections: Collection[]
   const pathname = usePathname()
   
   return (
-    <div className={cn("bg-white dark:bg-card rounded-lg p-4 w-full max-w-xs lg:max-w-sm", className)}>
-      <ul className="flex flex-col gap-2">
-        <li>
-          <Link 
-            href="/shop" 
-            prefetch
-            className={cn("block px-3 py-2 rounded font-bold text-xs md:text-sm whitespace-nowrap transition-colors",
-              pathname === "/shop"
-                ? "bg-black dark:bg-black text-white"
-                : "bg-gray-200 dark:bg-gray-700 text-foreground hover:bg-black/80 hover:text-white"
-            )}
-          >
-            All
-          </Link>
-        </li>
-        {collections.map((item, index) => (
-          <li key={`${item.handle}-${index}`}>
+    <div className={cn("bg-white dark:bg-card rounded-lg overflow-hidden w-full max-w-xs lg:max-w-sm", className)}>
+      <div className="relative h-16 bg-black flex items-center justify-center mb-4">
+        <h2 className="text-3xl font-black text-transparent" style={{
+          WebkitTextStroke: "2px white",
+          textStroke: "2px white",
+          letterSpacing: "-0.02em"
+        }}>
+          Filters
+        </h2>
+      </div>
+      <div className="px-4 pb-4">
+        <ul className="flex flex-col gap-2">
+          <li>
             <Link 
-              href={`/shop/${item.handle}`} 
+              href="/shop" 
               prefetch
               className={cn("block px-3 py-2 rounded font-bold text-xs md:text-sm whitespace-nowrap transition-colors",
-                pathname === `/shop/${item.handle}`
+                pathname === "/shop"
                   ? "bg-black dark:bg-black text-white"
                   : "bg-gray-200 dark:bg-gray-700 text-foreground hover:bg-black/80 hover:text-white"
               )}
             >
-              {item.title}
+              All
             </Link>
           </li>
-        ))}
-      </ul>
+          {collections.map((item, index) => (
+            <li key={`${item.handle}-${index}`}>
+              <Link 
+                href={`/shop/${item.handle}`} 
+                prefetch
+                className={cn("block px-3 py-2 rounded font-bold text-xs md:text-sm whitespace-nowrap transition-colors",
+                  pathname === `/shop/${item.handle}`
+                    ? "bg-black dark:bg-black text-white"
+                    : "bg-gray-200 dark:bg-gray-700 text-foreground hover:bg-black/80 hover:text-white"
+                )}
+              >
+                {item.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   )
 }
