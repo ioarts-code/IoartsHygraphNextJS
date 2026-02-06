@@ -7,6 +7,9 @@ Allow: /terms-of-sale
 Allow: /privacy-policy
 Disallow: /
 
+# Explicitly block product pages
+Disallow: /product/
+
 # Disallow crawling of admin and API routes
 Disallow: /api/
 Disallow: /admin/
