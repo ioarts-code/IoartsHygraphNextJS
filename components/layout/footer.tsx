@@ -16,7 +16,7 @@ export async function Footer() {
       <div className="w-full md:h-[532px] p-sides md:p-11 text-background bg-foreground rounded-[12px] flex flex-col justify-between max-md:gap-8">
         <div className="flex flex-col justify-between md:flex-row">
           <LogoSvg className="md:basis-3/4 max-md:w-full max-w-[1200px] h-auto block" />
-          <div className="flex flex-col gap-2 justify-end max-md:hidden">
+          <div className="flex gap-2 justify-end max-md:hidden">
             {SOCIAL_LINKS.map((link) => (
               <a
                 key={link.href}
