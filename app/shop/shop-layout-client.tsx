@@ -39,10 +39,10 @@ function FilterComponent({ collections, className }: { collections: Collection[]
   
   return (
     <div className={cn("bg-white dark:bg-card rounded-lg overflow-hidden w-full max-w-xs lg:max-w-sm", className)}>
-      <div className="relative h-16 bg-black flex items-center justify-center mb-4">
+      <div className="relative h-16 bg-white flex items-center justify-center mb-4">
         <h2 className="text-3xl font-black text-transparent" style={{
-          WebkitTextStroke: "2px white",
-          textStroke: "2px white",
+          WebkitTextStroke: "2px black",
+          textStroke: "2px black",
           letterSpacing: "-0.02em"
         }}>
           Filters
