@@ -1,13 +1,21 @@
 import sharp from 'sharp';
 import path from 'path';
+import fs from 'fs';
 
-const INPUT = path.resolve('public/logobig.png');
-const APP_DIR = path.resolve('app');
-const PUBLIC_DIR = path.resolve('public');
+// Write to both local output and project paths
+const PROJECT_APP = '/vercel/share/v0-project/app';
+const PROJECT_PUBLIC = '/vercel/share/v0-project/public';
+const LOCAL_OUT = 'generated-logos';
+fs.mkdirSync(LOCAL_OUT, { recursive: true });
+
+const LOGO_URL = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logobig-ORQY9sJRvA2sVb5R0V1XVnUwx9tcCB.png';
 
 async function generateImages() {
-  // Read original image
-  const original = sharp(INPUT);
+  // Fetch the original image from blob URL
+  const response = await fetch(LOGO_URL);
+  const inputBuffer = Buffer.from(await response.arrayBuffer());
+
+  const original = sharp(inputBuffer);
   const metadata = await original.metadata();
   const size = Math.min(metadata.width, metadata.height);
 
@@ -63,7 +71,7 @@ async function generateImages() {
     .resize(logoSize, logoSize, { fit: 'contain', background: { r: 255, g: 255, b: 255, alpha: 1 } })
     .toBuffer();
 
-  await sharp({
+  const ogBuffer = await sharp({
     create: {
       width: ogWidth,
       height: ogHeight,
@@ -77,60 +85,63 @@ async function generateImages() {
       top: Math.round((ogHeight - logoSize) / 2),
     }])
     .png()
-    .toFile(path.join(APP_DIR, 'opengraph-image.png'));
-
-  console.log('Created opengraph-image.png');
-
-  // 2. Twitter image
-  await sharp({
-    create: {
-      width: ogWidth,
-      height: ogHeight,
-      channels: 4,
-      background: { r: 255, g: 255, b: 255, alpha: 1 }
-    }
-  })
-    .composite([{
-      input: logoResized,
-      left: Math.round((ogWidth - logoSize) / 2),
-      top: Math.round((ogHeight - logoSize) / 2),
-    }])
-    .png()
-    .toFile(path.join(APP_DIR, 'twitter-image.png'));
-
-  console.log('Created twitter-image.png');
+    .toBuffer();
 
   // 3. Apple touch icon (180x180)
-  await sharp(circularImage)
+  const appleIconBuffer = await sharp(circularImage)
     .resize(180, 180)
     .png()
-    .toFile(path.join(APP_DIR, 'apple-icon.png'));
-
-  console.log('Created apple-icon.png');
+    .toBuffer();
 
   // 4. Favicon (32x32 PNG)
-  await sharp(circularImage)
+  const iconBuffer = await sharp(circularImage)
     .resize(32, 32)
     .png()
-    .toFile(path.join(APP_DIR, 'icon.png'));
-
-  console.log('Created icon.png');
+    .toBuffer();
 
   // 5. PWA icon 192x192
-  await sharp(circularImage)
+  const icon192Buffer = await sharp(circularImage)
     .resize(192, 192)
     .png()
-    .toFile(path.join(PUBLIC_DIR, 'icon-192.png'));
-
-  console.log('Created icon-192.png');
+    .toBuffer();
 
   // 6. PWA icon 512x512
-  await sharp(circularImage)
+  const icon512Buffer = await sharp(circularImage)
     .resize(512, 512)
     .png()
-    .toFile(path.join(PUBLIC_DIR, 'icon-512.png'));
+    .toBuffer();
 
-  console.log('Created icon-512.png');
+  // Write to project app directory
+  const appFiles = {
+    'opengraph-image.png': ogBuffer,
+    'twitter-image.png': ogBuffer,
+    'apple-icon.png': appleIconBuffer,
+    'icon.png': iconBuffer,
+  };
+  for (const [name, buf] of Object.entries(appFiles)) {
+    try {
+      fs.writeFileSync(path.join(PROJECT_APP, name), buf);
+      console.log(`Written to project: app/${name}`);
+    } catch (e) {
+      fs.writeFileSync(path.join(LOCAL_OUT, name), buf);
+      console.log(`Written to local: ${LOCAL_OUT}/${name}`);
+    }
+  }
+
+  // Write to project public directory
+  const publicFiles = {
+    'icon-192.png': icon192Buffer,
+    'icon-512.png': icon512Buffer,
+  };
+  for (const [name, buf] of Object.entries(publicFiles)) {
+    try {
+      fs.writeFileSync(path.join(PROJECT_PUBLIC, name), buf);
+      console.log(`Written to project: public/${name}`);
+    } catch (e) {
+      fs.writeFileSync(path.join(LOCAL_OUT, name), buf);
+      console.log(`Written to local: ${LOCAL_OUT}/${name}`);
+    }
+  }
 
   console.log('All logo images generated successfully!');
 }
