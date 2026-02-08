@@ -1,5 +1,4 @@
 import sharp from 'sharp';
-import fs from 'fs';
 import path from 'path';
 
 const INPUT = path.resolve('public/logobig.png');
@@ -82,7 +81,7 @@ async function generateImages() {
 
   console.log('Created opengraph-image.png');
 
-  // 2. Twitter image (same as OG, Next.js uses opengraph-image by default but let's create twitter-image too)
+  // 2. Twitter image
   await sharp({
     create: {
       width: ogWidth,
@@ -109,7 +108,7 @@ async function generateImages() {
 
   console.log('Created apple-icon.png');
 
-  // 4. Favicon (32x32 PNG, Next.js convention for app/icon.png)
+  // 4. Favicon (32x32 PNG)
   await sharp(circularImage)
     .resize(32, 32)
     .png()
@@ -117,7 +116,7 @@ async function generateImages() {
 
   console.log('Created icon.png');
 
-  // 5. Also create a larger icon variant (192x192 for PWA)
+  // 5. PWA icon 192x192
   await sharp(circularImage)
     .resize(192, 192)
     .png()
@@ -125,7 +124,7 @@ async function generateImages() {
 
   console.log('Created icon-192.png');
 
-  // 6. Create 512x512 icon for PWA
+  // 6. PWA icon 512x512
   await sharp(circularImage)
     .resize(512, 512)
     .png()
