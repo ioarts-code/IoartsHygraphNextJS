@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ioarts.ink'
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://v0-hygraphioarts2v0.vercel.app'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Only include indexable pages

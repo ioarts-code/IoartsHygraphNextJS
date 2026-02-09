@@ -34,20 +34,20 @@ const sedgwickAveDisplay = Sedgwick_Ave_Display({
   subsets: ["latin"],
 })
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.ioarts.ink"
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://v0-hygraphioarts2v0.vercel.app"
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "ioarts.ink - Premium Art & Design Store",
-    template: "%s | ioarts.ink",
+    default: "v0-hygraphioarts2v0.vercel.app - Premium Art & Design Store",
+    template: "%s | v0-hygraphioarts2v0.vercel.app",
   },
   description:
-    "Discover unique art pieces, premium design products, and creative collections at ioarts.ink. Your destination for curated artistic excellence.",
+    "Discover unique art pieces, premium design products, and creative collections at v0-hygraphioarts2v0.vercel.app. Your destination for curated artistic excellence.",
   keywords: ["art", "design", "premium products", "creative", "ioarts", "online store"],
-  authors: [{ name: "ioarts.ink" }],
-  creator: "ioarts.ink",
-  publisher: "ioarts.ink",
+  authors: [{ name: "v0-hygraphioarts2v0.vercel.app" }],
+  creator: "v0-hygraphioarts2v0.vercel.app",
+  publisher: "v0-hygraphioarts2v0.vercel.app",
   generator: "v0.app",
   robots: {
     index: true,
@@ -64,30 +64,30 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: baseUrl,
-    title: "ioarts.ink - Premium Art & Design Store",
-    description: "Discover unique art pieces, premium design products, and creative collections at ioarts.ink.",
-    siteName: "ioarts.ink",
+    title: "v0-hygraphioarts2v0.vercel.app - Premium Art & Design Store",
+    description: "Discover unique art pieces, premium design products, and creative collections at v0-hygraphioarts2v0.vercel.app.",
+    siteName: "v0-hygraphioarts2v0.vercel.app",
     images: [
       {
         url: `${baseUrl}/logo-icon.svg`,
         width: 219,
         height: 226,
-        alt: "ioarts.ink Logo",
+        alt: "v0-hygraphioarts2v0.vercel.app Logo",
         type: "image/svg+xml",
       },
       {
         url: `${baseUrl}/opengraph-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "ioarts.ink - Premium Art & Design Store",
+        alt: "v0-hygraphioarts2v0.vercel.app - Premium Art & Design Store",
         type: "image/jpeg",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ioarts.ink - Premium Art & Design Store",
-    description: "Discover unique art pieces, premium design products, and creative collections at ioarts.ink.",
+    title: "v0-hygraphioarts2v0.vercel.app - Premium Art & Design Store",
+    description: "Discover unique art pieces, premium design products, and creative collections at v0-hygraphioarts2v0.vercel.app.",
     creator: "@ioarts",
     images: [`${baseUrl}/twitter-image.jpg`],
   },
@@ -139,7 +139,7 @@ export default async function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "ioarts.ink",
+              name: "v0-hygraphioarts2v0.vercel.app",
               url: baseUrl,
               logo: `${baseUrl}/logo-icon.svg`,
               description: "Premium art and design store",
@@ -157,7 +157,7 @@ export default async function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              name: "ioarts.ink",
+              name: "v0-hygraphioarts2v0.vercel.app",
               url: baseUrl,
               potentialAction: {
                 "@type": "SearchAction",
