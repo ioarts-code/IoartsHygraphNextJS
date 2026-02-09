@@ -16,13 +16,13 @@ export const metadata: Metadata = {
   description:
     "Discover our latest collection of premium art and design products. Shop unique pieces curated for creative excellence.",
   openGraph: {
-    title: "ioarts.ink - Premium Art & Design Store",
+    title: "v0-hygraphioarts2v0.vercel.app - Premium Art & Design Store",
     description: "Discover our latest collection of premium art and design products.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ioarts.ink - Premium Art & Design Store",
+    title: "v0-hygraphioarts2v0.vercel.app - Premium Art & Design Store",
     description: "Discover our latest collection of premium art and design products.",
   },
 }
