@@ -1,4 +1,4 @@
-# robots.txt for v0-hygraphioarts2v0.vercel.app
+# robots.txt for www.ioarts.eu
 # Disallow all pages except homepage and specific policy pages
 User-agent: *
 Allow: /$
@@ -32,4 +32,4 @@ User-agent: DotBot
 Crawl-delay: 10
 
 # Sitemap location
-Sitemap: https://v0-hygraphioarts2v0.vercel.app/sitemap.xml
+Sitemap: https://www.ioarts.eu/sitemap.xml
