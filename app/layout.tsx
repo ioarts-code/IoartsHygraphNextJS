@@ -34,31 +34,29 @@ const sedgwickAveDisplay = Sedgwick_Ave_Display({
   subsets: ["latin"],
 })
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://v0-hygraphioarts2v0.vercel.app"
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.ioarts.eu"
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "v0-hygraphioarts2v0.vercel.app - Premium Art & Design Store",
-    template: "%s | v0-hygraphioarts2v0.vercel.app",
+    default: "www.ioarts.eu - Premium Art & Design Store",
+    template: "%s | www.ioarts.eu",
   },
   description:
-    "Discover unique art pieces, premium design products, and creative collections at v0-hygraphioarts2v0.vercel.app. Your destination for curated artistic excellence.",
+    "Discover unique art pieces, premium design products, and creative collections at www.ioarts.eu. Your destination for curated artistic excellence.",
   keywords: ["art", "design", "premium products", "creative", "ioarts", "online store"],
-  authors: [{ name: "v0-hygraphioarts2v0.vercel.app" }],
-  creator: "v0-hygraphioarts2v0.vercel.app",
-  publisher: "v0-hygraphioarts2v0.vercel.app",
+  authors: [{ name: "www.ioarts.eu" }],
+  creator: "www.ioarts.eu",
+  publisher: "www.ioarts.eu",
   generator: "v0.app",
   robots: {
-    index: false,
-    follow: false,
-    noarchive: true,
+    index: true,
+    follow: true,
     googleBot: {
-      index: false,
-      follow: false,
-      noimageindex: true,
+      index: true,
+      follow: true,
       "max-video-preview": -1,
-      "max-image-preview": "none",
+      "max-image-preview": "large",
       "max-snippet": -1,
     },
   },
@@ -66,30 +64,30 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: baseUrl,
-    title: "v0-hygraphioarts2v0.vercel.app - Premium Art & Design Store",
-    description: "Discover unique art pieces, premium design products, and creative collections at v0-hygraphioarts2v0.vercel.app.",
-    siteName: "v0-hygraphioarts2v0.vercel.app",
+    title: "www.ioarts.eu - Premium Art & Design Store",
+    description: "Discover unique art pieces, premium design products, and creative collections at www.ioarts.eu.",
+    siteName: "www.ioarts.eu",
     images: [
       {
         url: `${baseUrl}/logo-icon.svg`,
         width: 219,
         height: 226,
-        alt: "v0-hygraphioarts2v0.vercel.app Logo",
+        alt: "www.ioarts.eu Logo",
         type: "image/svg+xml",
       },
       {
         url: `${baseUrl}/opengraph-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "v0-hygraphioarts2v0.vercel.app - Premium Art & Design Store",
+        alt: "www.ioarts.eu - Premium Art & Design Store",
         type: "image/jpeg",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "v0-hygraphioarts2v0.vercel.app - Premium Art & Design Store",
-    description: "Discover unique art pieces, premium design products, and creative collections at v0-hygraphioarts2v0.vercel.app.",
+    title: "www.ioarts.eu - Premium Art & Design Store",
+    description: "Discover unique art pieces, premium design products, and creative collections at www.ioarts.eu.",
     creator: "@ioarts",
     images: [`${baseUrl}/twitter-image.jpg`],
   },
@@ -141,7 +139,7 @@ export default async function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "v0-hygraphioarts2v0.vercel.app",
+              name: "www.ioarts.eu",
               url: baseUrl,
               logo: `${baseUrl}/logo-icon.svg`,
               description: "Premium art and design store",
@@ -159,7 +157,7 @@ export default async function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              name: "v0-hygraphioarts2v0.vercel.app",
+              name: "www.ioarts.eu",
               url: baseUrl,
               potentialAction: {
                 "@type": "SearchAction",

@@ -61,7 +61,7 @@ export async function generateMetadata(props: { params: Promise<{ handle: string
     },
     openGraph: url
       ? {
-          title: `${title} | v0-hygraphioarts2v0.vercel.app`,
+          title: `${title} | www.ioarts.eu`,
           description,
           type: "website",
           images: [
@@ -74,20 +74,20 @@ export async function generateMetadata(props: { params: Promise<{ handle: string
           ],
         }
       : {
-          title: `${title} | v0-hygraphioarts2v0.vercel.app`,
+          title: `${title} | www.ioarts.eu`,
           description,
           type: "website",
         },
     twitter: url
       ? {
           card: "summary_large_image",
-          title: `${title} | v0-hygraphioarts2v0.vercel.app`,
+          title: `${title} | www.ioarts.eu`,
           description,
           images: [url],
         }
       : {
           card: "summary",
-          title: `${title} | v0-hygraphioarts2v0.vercel.app`,
+          title: `${title} | www.ioarts.eu`,
           description,
         },
   }
