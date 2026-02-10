@@ -1,4 +1,35 @@
 # robots.txt for v0-hygraphioarts2v0.vercel.app
-# Disallow entire site from indexing
+# Disallow all pages except homepage and specific policy pages
 User-agent: *
+Allow: /$
+Allow: /contact
+Allow: /terms-of-sale
+Allow: /privacy-policy
 Disallow: /
+
+# Explicitly block product pages
+Disallow: /product/
+
+# Disallow crawling of admin and API routes
+Disallow: /api/
+Disallow: /admin/
+
+# Disallow query parameters to prevent duplicate content
+Disallow: /*?*sort=
+Disallow: /*?*filter=
+
+# Allow specific search engines for images
+User-agent: Googlebot-Image
+Allow: /$
+Allow: /contact
+Allow: /terms-of-sale
+Allow: /privacy-policy
+
+# Crawl delay for aggressive bots (in seconds)
+User-agent: AhrefsBot
+User-agent: SemrushBot
+User-agent: DotBot
+Crawl-delay: 10
+
+# Sitemap location
+Sitemap: https://v0-hygraphioarts2v0.vercel.app/sitemap.xml
